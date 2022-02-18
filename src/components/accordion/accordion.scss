@@ -1,0 +1,25 @@
+.accordion {
+  @apply relative text-left w-full bg-white border border-gray-200 rounded-md;
+
+  .accordion-title {
+    @apply grid w-full p-2;
+    grid-template-columns: auto 5% 5%;
+
+    .title {
+      @apply w-max;
+    }
+
+    .dot {
+      @apply w-3 h-3 rounded-md  col-start-2;
+    }
+
+    .chevron-container {
+      @apply flex items-center justify-center h-full w-full col-start-3;
+    }
+  }
+
+  .accordion-body {
+    @apply grid shadow-lg ring-black ring-opacity-5 border-t rounded-b-md border-gray-200 w-full;
+    min-width: max-content;
+  }
+}

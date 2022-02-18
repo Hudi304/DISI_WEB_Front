@@ -1,0 +1,20 @@
+.header {
+  @apply grid grid-flow-col items-center col-span-full items-end pl-0.5 mb-3;
+  grid-template-columns: 1fr auto;
+
+  .header-title {
+    @apply text-headline font-semibold text-gray-900 mb-1;
+  }
+
+  .header-description {
+    @apply text-body text-gray-500;
+  }
+
+  .header-actions {
+    @apply grid gap-2 justify-end items-center grid-flow-col;
+  }
+
+  .header-right-side {
+    @apply grid gap-2 justify-end items-center grid-flow-col;
+  }
+}

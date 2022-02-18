@@ -1,0 +1,15 @@
+.breadcrumbs {
+  @apply flex flex-wrap items-center justify-start mb-3 ml-0.5;
+
+  .breadcrumb {
+    @apply grid grid-flow-col items-center text-caption-1 text-primary- font-semibold hover:text-primary-400;
+
+    &.active {
+      @apply font-normal text-gray-400 pointer-events-none;
+    }
+
+    .breadcrumb-separator {
+      @apply mx-1 scale-50;
+    }
+  }
+}

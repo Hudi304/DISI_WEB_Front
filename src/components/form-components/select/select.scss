@@ -1,0 +1,31 @@
+.select-container {
+  @apply relative rounded-lg w-full;
+
+  .options {
+    @apply absolute w-full z-50 py-1 mt-1 top-12 overflow-auto bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none;
+  }
+}
+
+.select-control {
+  @apply w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg cursor-default;
+}
+
+.select-option {
+  @apply cursor-default select-none relative p-2;
+
+  &:hover {
+    @apply bg-gray-100;
+  }
+
+  &.selected {
+    @apply bg-secondary-400 text-white;
+  }
+
+  &.disabled {
+    @apply opacity-50 pointer-events-none;
+  }
+}
+
+.select__value-container {
+  padding: 0 !important;
+}

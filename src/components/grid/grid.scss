@@ -1,0 +1,10 @@
+.grid-container {
+  @apply relative rounded-md content-start overflow-auto w-full;
+  animation-delay: 1s;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}

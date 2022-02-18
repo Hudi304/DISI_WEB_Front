@@ -1,0 +1,9 @@
+.dropdown {
+  @apply relative inline-block text-left w-full;
+
+  .menu-items {
+    @apply absolute grid z-50 right-0 origin-top-right bg-white divide-y divide-gray-100 
+      rounded-md shadow-lg ring-black ring-opacity-5 focus:outline-none;
+    min-width: max-content;
+  }
+}

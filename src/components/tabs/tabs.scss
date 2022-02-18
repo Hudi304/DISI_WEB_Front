@@ -1,0 +1,33 @@
+.tabs-container {
+  @apply relative mb-10;
+
+  .tabs {
+    @apply grid grid-flow-col items-center justify-start gap-10 border-b border-gray-200;
+
+    .tab-button {
+      @apply grid pb-4 text-callout font-semibold text-gray-500 px-3 -bottom-0 transition-all duration-300 ease-out;
+      grid-template-columns: auto 1fr;
+
+      .tab-icon {
+        @apply ml-2 mt-0.5 text-primary-;
+      }
+
+      &.selected {
+        @apply text-gray-900;
+      }
+
+      &.disabled {
+        @apply text-gray-400 pointer-events-none;
+      }
+    }
+  }
+
+  .tabs-actions {
+    @apply justify-self-end mb-2.5;
+  }
+
+  .tab-slider {
+    height: 3px;
+    @apply absolute w-full bg-primary- bottom-0 transition-all duration-300 rounded-full;
+  }
+}

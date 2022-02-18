@@ -1,0 +1,9 @@
+.textarea {
+  .base-input {
+    @apply h-full resize-y;
+  }
+
+  .error-message {
+    margin-top: 0;
+  }
+}

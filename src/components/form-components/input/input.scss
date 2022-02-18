@@ -1,0 +1,7 @@
+.text-input-prefix {
+  @apply absolute left-1 top-7 bottom-8 flex items-center bg-white;
+}
+
+.text-input-suffix {
+  @apply absolute right-2 top-7 bottom-8 flex items-center bg-white;
+}

@@ -1,0 +1,20 @@
+.skeleton-container {
+  position: relative;
+
+  &.loading {
+    & > * {
+      @apply relative bg-gray-100 text-gray-100 border-gray-100 placeholder-primary-100 rounded-md;
+      transition-duration: 0s !important;
+      & > * {
+        opacity: 0 !important;
+      }
+
+      &:after {
+        content: " ";
+        @apply block bg-gray-100 text-gray-100 
+          absolute top-0 left-0 right-0 bottom-0
+          rounded-md animate-pulse;
+      }
+    }
+  }
+}

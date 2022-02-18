@@ -1,0 +1,7 @@
+.grid-header {
+  @apply grid sticky top-0 z-10 w-full;
+
+  .grid-header-column {
+    @apply text-left text-caption-1 font-medium bg-gray-100 p-2 grid items-center capitalize;
+  }
+}

@@ -1,0 +1,7 @@
+.card {
+  @apply relative grid bg-white shadow rounded-lg p-5 content-start;
+
+  .card-loading {
+    @apply animate-pulse absolute opacity-50 bg-white inset-0 z-50 grid justify-items-center items-center;
+  }
+}
