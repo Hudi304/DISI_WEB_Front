@@ -1,0 +1,18 @@
+.login-page-container {
+  @apply flex items-center justify-center overflow-hidden bg-blue-500;
+  width: 100vw;
+  height: 100vh;
+
+  .login-card {
+    @apply bg-blue-300;
+
+    .login-form {
+      // @apply ;
+
+      .login-buttons-bar {
+        @apply grid gap-2;
+        grid-template-columns: repeat(2, auto);
+      }
+    }
+  }
+}
