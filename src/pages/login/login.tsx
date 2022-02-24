@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "components/form-components/input/input";
 import { Button } from "components/button/button";
 import { useNavigate } from "react-router-dom";
+import { loginApi } from "api/endpoints/login";
 
 const schema = yup.object({});
 
@@ -26,8 +27,10 @@ const LoginComponent: FC<Props> = ({}: Props) => {
       countOption: "",
     },
   });
-  function handleSubmit() {
-    console.log("Login submit");
+  function handleSubmit(values: any) {
+    console.log("Login submit", values);
+
+    loginApi({ username: values.userName, password: values.password });
   }
 
   function redirectsToSignUp() {
