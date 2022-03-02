@@ -19,6 +19,8 @@ const APIS = "api/endpoints";
 
 const ENVIRONMENT = argv.env || 'dev';
 
+const apiURL = "https://matei-anechitei-ds-2.herokuapp.com/v3/api-docs"
+
 
 
 let host = `localhost:8080`;
@@ -74,7 +76,7 @@ function extractFilesFromJSON(api, cb) {
 }
 
 function extractFiles(api, cb) {
-  axios.get("http://localhost:8080/v3/api-docs").then(response => {
+  axios.get(apiURL).then(response => {
     const body = response.data
     api.enums = extractEnums(body)
     api.models = extractModels(body, api.enums)

@@ -1,16 +1,16 @@
 import { init, RematchRootState, RematchDispatch, Models } from "@rematch/core";
 import loadingPlugin, { ExtraModelsFromLoading } from "@rematch/loading";
 
-import auth from "./auth";
+// import auth from "./auth";
 
 interface RootModel extends Models<RootModel> {
-  auth: typeof auth;
+  // auth: typeof auth;
 }
 
 type FullModel = ExtraModelsFromLoading<RootModel>;
 
 const models = {
-  auth,
+  // auth,
 } as RootModel;
 
 const store = init<RootModel, FullModel>({
