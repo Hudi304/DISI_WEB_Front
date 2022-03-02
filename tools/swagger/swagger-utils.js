@@ -16,7 +16,7 @@ module.exports.getType = getObjectType;
 module.exports.isEnum = isEnum;
 
 function getObjectType(prop) {
-  switch (prop.type) {
+  switch (prop?.type) {
     case 'integer':
     case 'number':
       return 'number | string';
@@ -24,18 +24,18 @@ function getObjectType(prop) {
       return 'any';
     case 'boolean':
     case 'string':
-      return prop.type;
+      return prop?.type;
     case 'array':
       return `${getObjectType(prop.items)}[]`;
     case 'formData': 
       return 'FormData';
   }
 
-  if (prop.$ref) {
-    let refName = prop.$ref.split('/').pop()
+  if (prop?.$ref) {
+    let refName = prop?.$ref.split('/').pop()
     return refName;
-  } else if (prop.allOf && prop.allOf[0].$ref) {
-    let refName = prop.allOf[0].$ref.split('/').pop()
+  } else if (prop?.allOf && prop?.allOf[0]?.$ref) {
+    let refName = prop?.allOf[0]?.$ref.split('/').pop()
     return refName;
   } else {
     return 'any';
@@ -109,21 +109,21 @@ function getRef(content) {
     return getRef(content['application/json'].schema)
   }
 
-  if (content.allOf) {
-    return getRef(content.allOf[0])
+  if (content?.allOf) {
+    return getRef(content?.allOf[0])
   }
 
   if (content.schema) {
     return getRef(content.schema)
   }
 
-  if (content.type === 'array') {
+  if (content?.type === 'array') {
     return getRef(content.items)
   }
 
-  if (content.$ref) {  
+  if (content?.$ref) {  
     console.log(content);  
-    return content.$ref.split('/').pop();
+    return content?.$ref.split('/').pop();
   } else {
     return undefined;
   }

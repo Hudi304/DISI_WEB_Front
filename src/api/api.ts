@@ -17,6 +17,8 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
     axiosInstance.defaults.headers.common.Authorization = `Bearer ${token.token}`;
   }
 
+  console.log("API invocation");
+
   axiosInstance.interceptors.response.use(
     (response) => {
       // console.log("response : ", response);
