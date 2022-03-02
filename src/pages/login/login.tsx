@@ -65,11 +65,11 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
 };
 
 const mapProps = (state: RootState) => ({
-  userInfo: state.auth.userInfo,
+  userInfo: state.auth.userInfo, //? 🍏 aici vine response-ul 
 });
 
 const mapDispatch = (dispatch: RootDispatch) => ({
-  login: dispatch.auth.login,
+  login: dispatch.auth.login, //? 🍎  de aici iei fuctia care face API call-ul
 });
 
 export const Login = connect(mapProps, mapDispatch)(LoginComponent);
