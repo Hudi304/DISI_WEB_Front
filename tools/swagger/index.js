@@ -21,6 +21,12 @@ const ENVIRONMENT = argv.env || 'dev';
 
 
 
+let host = `localhost:8080`;
+let apis = [{
+  name: '',
+  path: '/v3/api-docs'
+}]
+
 let apiCount = 0;
 apis.forEach(api => extractFiles(api, () => {
   apiCount++
