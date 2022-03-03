@@ -9,8 +9,8 @@ Design : https://www.figma.com/file/wgdgjE585LmVbrRHGTFIyM/DISI---SavingLives?no
 You'll need Node to run this app.
 
 After you clone the repo:
-  yarn (or yarn install)
-  yarn start;
+ -yarn (or yarn install)
+ -yarn start;
 
 Regenerate models: yarn swagger
  it will generate enums, models and Api calls.
