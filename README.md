@@ -13,11 +13,14 @@ After you clone the repo:
  > yarn (or yarn install)
  > yarn start;
 ```
-Regenerate models: yarn swagger
- it will generate enums, models and Api calls.
- Models : src/common/models
- Enums : src/common/enums
- API_calls : src/api/endpoints
+Regenerate models: 
+```
+> yarn swagger
+```
+- It will generate enums, models and Api calls.
+- Models : src/common/models
+- Enums : src/common/enums
+- API_calls : src/api/endpoints
  
  In order to use rematch for state management in your page:
     🍎 you need to create a store for your page (if the api calls are already in store use the ones already there)
