@@ -17,7 +17,7 @@ Regenerate models:
 ```
 > yarn swagger
 ```
-- It will generate enums, models and Api calls.
+## It will generate enums, models and Api calls.
 - Models : src/common/models
 - Enums : src/common/enums
 - API_calls : src/api/endpoints
