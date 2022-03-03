@@ -6,4 +6,4 @@ export const insertNormalUserApi = (body: UserRegisterRequest): Promise<any> => 
 
 export const insertDoctorUserApi = (body: UserRegisterRequest): Promise<any> => API().post(`register_doctor`, body);
 
-export const createAuthenticationTokenApi = (body: LoginRequest): Promise<any> => API().post(`login`, body);
+export const loginApi = (body: LoginRequest): Promise<any> => API().post(`login`, body);
