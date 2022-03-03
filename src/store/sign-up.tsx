@@ -1,25 +1,25 @@
 import { RematchDispatch } from "@rematch/core";
-import { loginApi } from "api/endpoints/jwt-authentication-controller.api";
-import { LoginRequest } from "common/models/LoginRequest";
+import { insertNormalUserApi } from "api/endpoints/jwt-authentication-controller.api";
+import { UserRegisterRequest } from "common/models/UserRegisterRequest";
 
 type State = Readonly<{
-  login: any; //! 🤖 ar trebui sa fie de tip Login response da'nu e definit pe server inca
-  userInfo: any;
+  signUp: any; //! 🤖 ar trebui sa fie de tip Login response da'nu e definit pe server inca
+  signUpInfo: any;
 }>;
 
 const model = {
   state: {
-    login: {},
+    signUp: {},
 
-    userInfo: {},
+    signUpInfo: {},
   } as State,
   reducers: {
-    loginLoaded: (state: State, payload: any): State => {
-      console.log("📅 REDUCER Login : ", payload);
+    signupLoaded: (state: State, payload: any): State => {
+      console.log("📅 REDUCER SignUp : ", payload);
       return {
         //? 🍎 aici ajunge, pune-l pe state
         ...state,
-        userInfo: payload, //🍏
+        signUpInfo: payload, //🍏
       };
     },
     loadedRetailerCategories: (state: State, payload: any): State => ({
@@ -29,12 +29,12 @@ const model = {
   },
   effects: (dispatch: RematchDispatch<any>) => ({
     //? la asta faci dispatch
-    async login(payload: LoginRequest) {
+    async signUpCall(payload: UserRegisterRequest) {
       //? wait for API call [src\api\endpoints\jwt-authentication-controller.api.ts]
-      const loginResponse = await loginApi(payload);
-      console.log("-----------", loginResponse);
+      const signupResponse = await insertNormalUserApi(payload);
+      console.log("-----------", signupResponse);
       //? dispatch result to make it go in reducer 🍎
-      dispatch.login.loginLoaded(loginResponse);
+      dispatch.signUp.signupLoaded(signupResponse);
     },
     async fetchRetailerCategories(payload: string) {
       // const retailerCategories = await getRetailerCategoriesApi(payload);

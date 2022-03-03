@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import "./sign-up.scss";
 import * as yup from "yup";
 
@@ -10,12 +10,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "components/form-components/input/input";
 import { Button } from "components/button/button";
 import { useNavigate } from "react-router-dom";
+import { UserRegisterRequest } from "common/models/UserRegisterRequest";
 
 const schema = yup.object({});
 
 type Props = ReturnType<typeof mapProps> & ReturnType<typeof mapDispatch>;
 
-const SignUpComponent: FC<Props> = ({}: Props) => {
+const SignUpComponent: FC<Props> = ({ signUpResponse, signUp }: Props) => {
   const navigate = useNavigate();
 
   const methods = useForm({
@@ -26,13 +27,27 @@ const SignUpComponent: FC<Props> = ({}: Props) => {
       countOption: "",
     },
   });
-  function handleSubmit() {
-    console.log("Sign Up submit");
+  function handleSubmit(values: any) {
+    console.log("Sign Up submit", values);
+    const signUpRequest: UserRegisterRequest = { email: values?.email, password: values.password }
+    signUp(signUpRequest);
   }
 
   function redirectsToLogin() {
     navigate("/login");
   }
+
+  function handleSignUp() {
+    console.log("SignUp");
+  }
+
+  useEffect(() => {
+
+    if (signUpResponse?.message) {
+      navigate("/login");
+    } 
+
+  }, [signUpResponse]) 
 
   return (
     <div className="sign-up-page-container">
@@ -63,8 +78,8 @@ const SignUpComponent: FC<Props> = ({}: Props) => {
   );
 };
 
-const mapProps = (state: RootState) => ({});
+const mapProps = (state: RootState) => ({ signUpResponse: state.signUp.signUpInfo });
 
-const mapDispatch = (dispatch: RootDispatch) => ({});
+const mapDispatch = (dispatch: RootDispatch) => ({ signUp: dispatch.signUp.signUpCall });
 
 export const SignUp = connect(mapProps, mapDispatch)(SignUpComponent);
