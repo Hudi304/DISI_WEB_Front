@@ -6,6 +6,8 @@ TailWind Cheat Sheet : https://nerdcave.com/tailwind-cheat-sheet
 
 Design : https://www.figma.com/file/wgdgjE585LmVbrRHGTFIyM/DISI---SavingLives?node-id=0%3A1
 
+Swagger : https://matei-anechitei-ds-2.herokuapp.com/swagger-ui/index.html#/
+
 You'll need Node to run this app.
 
 After you clone the repo:
