@@ -11,13 +11,16 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
   const tokenLS = getAccessToken();
   const token = JSON.parse(tokenLS || "{}");
 
-  // console.log("auth headers", token);
+  console.log("auth headers", token.token);
 
   if (typeof token.token == "string") {
     axiosInstance.defaults.headers.common.Authorization = `Bearer ${token.token}`;
+    console.log("bearer");
   }
 
-  console.log("API invocation");
+  // console.log("API invocation");
+  // console.log("baseURL : ", baseURL);
+  // console.log("callOptions : ", callOptions);
 
   axiosInstance.interceptors.response.use(
     (response) => {
@@ -29,9 +32,12 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
       return Promise.resolve(response.data);
     },
     (error) => {
-      console.log("Error : ", error);
+      // console.log("Error : ", error);
       if (error.response.status === 401) {
+        console.log("Request failed with status 401  Unauthorized ");
+        clearToken();
       }
+      return Promise.resolve(error);
     }
   );
 
