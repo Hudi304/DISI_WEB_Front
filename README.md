@@ -57,6 +57,72 @@ const model = {
 };
 
 export default model;
-        ```
+```
+
+Put it in the global store so you can acces it from anywhere:
+### store/idnex.tsx
+
+```
+import login from "./login";
+
+interface RootModel extends Models<RootModel> {
+  login: typeof login;
+}
+
+type FullModel = ExtraModelsFromLoading<RootModel>;
+
+const models = {
+  login,
+} as RootModel;
+
+const store = init<RootModel, FullModel>({
+  models,
+  plugins: [loadingPlugin()],
+} as any);
+
+export default store;
+export type RootDispatch = RematchDispatch<RootModel>;
+export type RootState = RematchRootState<RootModel, FullModel>;
+```
+
+### Back in pages/your-page.tsx
+```
+type LoginProps = ReturnType<typeof mapProps> & ReturnType<typeof mapDispatch>;
+
+const LoginComponent: FC<LoginProps> = ({ login }: LoginProps) => {
+  return (<div>Your nice looking page</div>)
+}
+
+const mapProps = (state: RootState) => ({
+   loginResponse: state.login.loginResponse, //? 🍏 aici vine response-ul
+});
+
+const mapDispatch = (dispatch: RootDispatch) => ({
+  login: dispatch.login.login, //? 🍎  de aici iei fuctia care face API call-ul
+});
+export const Login = connect(mapProps, mapDispatch)(LoginComponent);
+```
+
+### Or, just as well you can use hoooks
+
+
+```
+type LoginProps = {
+  itemId: string | null;
+};
+
+
+export const Login: FC<LoginProps> = ({ login }: LoginProps) => {
+  //  🍎 just an example you have acces to anyting from the store like this (it's the preffered way industry wide)
+  const selectedProducts = useSelector((state: RootState) => state.auditCatalog?.products);
+  const updateItemTags = useDispatch<RootDispatch>().auditCatalog.updateItemTags;
+  const updateWorkspaceTags = useDispatch<RootDispatch>().auditCatalog.updateWorkspaceTags;
+
+  return (<div>Your nice looking page</div>)
+}
+
+```
+
+
         
       
