@@ -3,15 +3,20 @@
   width: 100vw;
   height: 100vh;
 
-  .login-card {
-    @apply bg-blue-300;
+  .login-page-grid {
+    @apply flex flex-col;
 
-    .login-form {
-      // @apply ;
+    .login-card-container {
+      @apply flex flex-col justify-end;
 
-      .login-buttons-bar {
-        @apply grid gap-2;
-        grid-template-columns: repeat(2, auto);
+      .login-card {
+        @apply bg-blue-300 align-bottom;
+        max-height: 300px;
+
+        .login-buttons-bar {
+          @apply grid gap-2;
+          grid-template-columns: repeat(2, auto);
+        }
       }
     }
   }

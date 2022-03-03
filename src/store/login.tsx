@@ -4,11 +4,14 @@ import { LoginRequest } from "common/models/LoginRequest";
 
 type State = Readonly<{
   login: any; //! 🤖 ar trebui sa fie de tip Login response da'nu e definit pe server inca
+  userInfo: any;
 }>;
 
 const model = {
   state: {
     login: {},
+
+    userInfo: {},
   } as State,
   reducers: {
     loginLoaded: (state: State, payload: any): State => {
@@ -16,7 +19,7 @@ const model = {
       return {
         //? 🍎 aici ajunge, pune-l pe state
         ...state,
-        login: payload, //🍏
+        userInfo: payload, //🍏
       };
     },
     loadedRetailerCategories: (state: State, payload: any): State => ({
@@ -30,7 +33,6 @@ const model = {
       //? wait for API call [src\api\endpoints\jwt-authentication-controller.api.ts]
       const loginResponse = await createAuthenticationTokenApi(payload);
       console.log("-----------", loginResponse);
-
       //? dispatch result to make it go in reducer 🍎
       dispatch.login.loginLoaded(loginResponse);
     },

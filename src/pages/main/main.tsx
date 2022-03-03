@@ -4,15 +4,19 @@ import { connect } from "react-redux";
 import { RootDispatch, RootState } from "store";
 import "./main.scss";
 import { Login } from "pages/login/login";
+import { Admin } from "pages/admin/admin";
+import { Doctor } from "pages/doctor/doctor";
+import { User } from "pages/user/user";
 
 type Props = ReturnType<typeof mapProps> & ReturnType<typeof mapDispatch>;
 
 const MainComponent: FC<Props> = ({}: Props) => {
   return (
     <div className="main">
-      Mare aplicatie la DISI
       <Routes>
-        <Route path="./login" element={<Login />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/doctor" element={<Doctor />} />
+        <Route path="/user" element={<User />} />
       </Routes>
     </div>
   );
