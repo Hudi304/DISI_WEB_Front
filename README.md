@@ -17,9 +17,10 @@ Regenerate models: yarn swagger
  In order to use rematch for state management in your page:
     🍎 you need to create a store for your page (if the api calls are already in store use the ones already there)
       Ex store/login : 
-      'code'
+  ````
         type State = Readonly<{
          login: any; //! 🤖 ar trebui sa fie de tip Login response da'nu e definit pe server inca
         }>;
+        ````
         
       
