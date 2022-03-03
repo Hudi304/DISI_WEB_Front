@@ -1,4 +1,6 @@
 const https = require("https")
+const http = require("http")
+
 const rimraf = require('rimraf');
 const mkdirp = require('mkdirp');
 const argv = require('yargs').argv;
@@ -6,20 +8,25 @@ const fs = require('fs');
 const getDirName = require('path').dirname;
 const { extractEnums } = require('./extract-enums');
 const { extractModels } = require('./extract-models')
-const { extractApis } = require('./extract-apis')
+const { extractApis } = require('./extract-apis');
+const { default: axios } = require("axios");
 
 const ROOT = "src";
 const ENUMS = "common/enums";
 const MODELS = "common/models";
 const APIS = "api/endpoints";
-const SWAGGER_JSON = require('../../swagger.json')
+// const SWAGGER_JSON = require('../../swagger.json')
 
 const ENVIRONMENT = argv.env || 'dev';
 
-let host = `next-gen-${ENVIRONMENT}-api.azurewebsites.net`;
+const apiURL = "https://matei-anechitei-ds-2.herokuapp.com/v3/api-docs"
+
+
+
+let host = `localhost:8080`;
 let apis = [{
   name: '',
-  path: '/swagger/v1/swagger.json'
+  path: '/v3/api-docs'
 }]
 
 let apiCount = 0;
@@ -49,7 +56,7 @@ apis.forEach(api => extractFiles(api, () => {
       })
     })
 
-     apis.forEach(value => {
+    apis.forEach(value => {
       rimraf(`${ROOT}/${APIS}/${value.name}`, () => {
         mkdirp(`${ROOT}/${APIS}/${value.name}`);
         value.apis.forEach(item => {
@@ -69,22 +76,14 @@ function extractFilesFromJSON(api, cb) {
 }
 
 function extractFiles(api, cb) {
-  https.get({
-    host,
-    path: api.path
-  }, response => {
-    let body = ''
-    response.on('data', (d) => {
-      body += d;
-    });
-    response.on('end', () => {
-      let parsed = JSON.parse(body);
-      api.enums = extractEnums(parsed)
-      api.models = extractModels(parsed, api.enums)
-      api.apis = extractApis(parsed, api.name, api.enums)
-      cb();
-    })
-  });
+  axios.get(apiURL).then(response => {
+    const body = response.data
+    api.enums = extractEnums(body)
+    api.models = extractModels(body, api.enums)
+    api.apis = extractApis(body, api.name, api.enums)
+    cb();
+  }
+  )
 }
 
 function writeFile(path, data, cb) {
