@@ -24,9 +24,9 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
 
   axiosInstance.interceptors.response.use(
     (response) => {
-      // console.log("response : ", response);
+      console.log("response 🔥 : ", response.data);
       if (response?.data?.token) {
-        setToken(response.data);
+        setToken(response.data.token);
         // console.log("setToken : ", response.data);
       }
       return Promise.resolve(response.data);
