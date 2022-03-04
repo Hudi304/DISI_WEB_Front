@@ -1,0 +1,24 @@
+.navbar-container {
+  @apply grid w-full;
+  // width: 100vw;
+
+  .appbar {
+    @apply w-full h-20 bg-white;
+  }
+
+  .navbar {
+    @apply w-full h-20 bg-primary-600 flex justify-center items-center;
+
+    .navbar-btn {
+      @apply mx-10 h-14 text-title-3 text-white font-medium rounded-xl;
+    }
+
+    .navbar-btn:hover {
+      @apply bg-secondary-600;
+    }
+
+    .active {
+      @apply bg-secondary-600;
+    }
+  }
+}

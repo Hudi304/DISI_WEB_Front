@@ -50,6 +50,7 @@ export const Checkbox: React.FC<Props> = React.memo(({
               disabled={disabled}
               readOnly={readonly}
               onChange={handleChange}
+              onClick={ (e)=> {e.stopPropagation()}}
               className="checkbox-input"
             />
           }
@@ -61,6 +62,7 @@ export const Checkbox: React.FC<Props> = React.memo(({
           disabled={disabled}
           readOnly={readonly}
           onChange={onChange}
+          onClick={ (e)=> {e.stopPropagation()}}
           className="checkbox-input"
         />
       )}

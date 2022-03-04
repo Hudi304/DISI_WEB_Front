@@ -44,6 +44,7 @@ import {
   MenuIcon,
   MenuAlt4Icon,
   DocumentDownloadIcon,
+  ClockIcon,
 } from "@heroicons/react/outline";
 
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/solid";
@@ -96,6 +97,7 @@ export const ICONS = {
   STAR_EMPTY: StarEmpty,
   MENU: MenuIcon,
   DOCUMENT_DOWNLOAD: DocumentDownloadIcon,
+  CLOCK: ClockIcon,
 };
 
 type Props = {

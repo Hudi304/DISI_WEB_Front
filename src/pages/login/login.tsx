@@ -30,12 +30,13 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
     },
   });
 
+
   useEffect(() => {
     console.log("userInfo : ", userInfo?.user);
     localStorage.setItem("userInfo", userInfo?.user);
 
     if (userInfo?.user?.role === "ADMIN") {
-      navigate("/admin");
+      navigate("/main/admin");
       userInfo = undefined;
     }
   }, [userInfo]);

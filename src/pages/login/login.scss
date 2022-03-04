@@ -19,5 +19,9 @@
         }
       }
     }
+
+    .logo-container {
+      @apply flex items-center justify-center;
+    }
   }
 }
