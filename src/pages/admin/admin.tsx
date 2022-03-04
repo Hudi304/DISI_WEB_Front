@@ -1,6 +1,3 @@
-import { Card } from "components/card/card";
-import { Checkbox } from "components/form-components/checkbox/checkbox";
-import { Grid } from "components/grid/grid";
 import { ICONS } from "components/icon/icon";
 import { NavBar, NavBarBtn } from "components/nav-bar/nav-bar";
 import { Route, Routes } from "react-router-dom";
@@ -15,16 +12,28 @@ const navButtons: NavBarBtn[] = [
   { icon: ICONS.USER, name: "Donations", path: "/main/admin/donations" },
 ];
 
-
+// Donation center list  👙
+// Add center  🧮
+// minimum requirements update  👙
+// news page donors guide etc   👙
+// add doctor 👙
+// data chats 👙
 
 export const Admin = () => (
   <div className="admin-page">
     <NavBar buttons={navButtons} />
     ADMIN PAGE
     <Routes>
-      <Route path="/users" element={<AdminUsers />} />
+      <Route path="/users" element={<AdminUsers />} /> //? asta nu exista
       <Route path="/doctors" element={<AdminDoctors />} />
       <Route path="/donations" element={<AdminDonations />} />
+      {/* <Route path="/centers" element={<AdminCenters />} /> */}
+      {/* <Route path="/charts" element={<AdminDataCharts />} /> */}
+      {/* <Route path="/news" element={<AdminNews />} /> */}
+      {/* <Route path="/requirements" element={<AdminRequirements />} /> */}
+
+
+
     </Routes>
   </div>
 );
