@@ -4,10 +4,12 @@ import loadingPlugin, { ExtraModelsFromLoading } from "@rematch/loading";
 // import auth from "./auth";
 
 import login from "./login";
+import signUp from "./sign-up";
 
 interface RootModel extends Models<RootModel> {
   // auth: typeof auth;
   login: typeof login;
+  signUp: typeof signUp;
 }
 
 type FullModel = ExtraModelsFromLoading<RootModel>;
@@ -15,6 +17,7 @@ type FullModel = ExtraModelsFromLoading<RootModel>;
 const models = {
   // auth,
   login,
+  signUp,
 } as RootModel;
 
 const store = init<RootModel, FullModel>({
