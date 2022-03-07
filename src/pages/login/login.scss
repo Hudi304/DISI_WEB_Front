@@ -11,11 +11,14 @@
 
       .login-card {
         @apply bg-blue-300 align-bottom;
-        max-height: 300px;
+        max-height: 320px;
 
         .login-buttons-bar {
           @apply grid gap-2;
           grid-template-columns: repeat(2, auto);
+        }
+        .reset-pass-btn {
+          @apply text-tertiary-900 my-2 mx-2 font-bold;
         }
       }
     }

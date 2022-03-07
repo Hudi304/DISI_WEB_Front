@@ -1,5 +1,5 @@
 import { RematchDispatch } from "@rematch/core";
-import { createAuthenticationTokenApi } from "api/endpoints/jwt-authentication-controller.api";
+import { loginApi } from "api/endpoints/jwt-authentication-controller.api";
 import { LoginRequest } from "common/models/LoginRequest";
 
 type State = Readonly<{
@@ -31,7 +31,7 @@ const model = {
     //? la asta faci dispatch
     async login(payload: LoginRequest) {
       //? wait for API call [src\api\endpoints\jwt-authentication-controller.api.ts]
-      const loginResponse = await createAuthenticationTokenApi(payload);
+      const loginResponse = await loginApi(payload);
       console.log("-----------", loginResponse);
       //? dispatch result to make it go in reducer 🍎
       dispatch.login.loginLoaded(loginResponse);

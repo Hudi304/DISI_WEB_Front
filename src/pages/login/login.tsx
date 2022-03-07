@@ -30,7 +30,6 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
     },
   });
 
-
   useEffect(() => {
     console.log("userInfo : ", userInfo?.user);
     localStorage.setItem("userInfo", userInfo?.user);
@@ -51,6 +50,10 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
     navigate("/sign-up");
   }
 
+  function redirectsToResetPassword() {
+    navigate("/reset-password");
+  }
+
   return (
     <div className="login-page-container">
       <div className="login-page-grid">
@@ -65,6 +68,9 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
                   <Button onClick={redirectsToSignUp}>Sign up</Button>
                   <Button type="submit">Login</Button>
                 </div>
+                <button className="reset-pass-btn" type="button" onClick={redirectsToResetPassword}>
+                  Forgot your password?
+                </button>
               </form>
             </FormProvider>
           </Card>
