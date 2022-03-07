@@ -35,7 +35,7 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
     localStorage.setItem("userInfo", userInfo?.user);
 
     if (userInfo?.user?.role === "ADMIN") {
-      navigate("/admin");
+      navigate("/main/admin");
       userInfo = undefined;
     }
   }, [userInfo]);
@@ -48,6 +48,10 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
 
   function redirectsToSignUp() {
     navigate("/sign-up");
+  }
+
+  function redirectsToResetPassword() {
+    navigate("/reset-password");
   }
 
   return (
@@ -64,6 +68,9 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
                   <Button onClick={redirectsToSignUp}>Sign up</Button>
                   <Button type="submit">Login</Button>
                 </div>
+                <button className="reset-pass-btn" type="button" onClick={redirectsToResetPassword}>
+                  Forgot your password?
+                </button>
               </form>
             </FormProvider>
           </Card>
