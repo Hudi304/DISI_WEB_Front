@@ -28,10 +28,6 @@ const ResetPasswordComponent:  FC<Props> = ({}: Props) =>{
         },
       });
 
-    function handleSubmit(){
-        console.log("Reset Password submit");
-    }
-
     function redirectsToLogin(){
         navigate("/login");
     }
@@ -41,7 +37,7 @@ const ResetPasswordComponent:  FC<Props> = ({}: Props) =>{
             <Card className="reset-password-card">
             Reset Password Page
                 <FormProvider {...methods}>
-                    <form className="sign-up-form" onSubmit={methods.handleSubmit(handleSubmit)}>
+                    <form className="sign-up-form">
                         <Input name="email" defaultValue="Email" label="Email" required={true} />
                         <div className="login-buttons-bar">
                             <Button type="submit">Reset Password</Button>
