@@ -37,10 +37,6 @@ const SignUpComponent: FC<Props> = ({ signUpResponse, signUp }: Props) => {
     navigate("/login");
   }
 
-  function handleSignUp() {
-    console.log("SignUp");
-  }
-
   useEffect(() => {
 
     if (signUpResponse?.message) {
