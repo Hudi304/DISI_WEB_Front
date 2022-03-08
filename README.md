@@ -1,5 +1,7 @@
 # README #
 
+## Please base your branches on the dev, Tudor will merge it into master once it's ready!
+
 Production : https://main.d2k4ifw8dsgumv.amplifyapp.com/login
 
 TailWind Cheat Sheet : https://nerdcave.com/tailwind-cheat-sheet
