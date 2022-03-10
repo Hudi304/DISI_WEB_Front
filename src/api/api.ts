@@ -37,7 +37,7 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
         console.log("Request failed with status 401  Unauthorized ");
         clearToken();
       }
-      return Promise.resolve(error);
+      return Promise.resolve({ message: error, status: error.response.status });
     }
   );
 

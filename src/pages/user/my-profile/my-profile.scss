@@ -1,0 +1,11 @@
+.my-profile-page {
+  @apply grid h-full;
+
+  .user-profile-parameter{
+    @apply w-64 h-72
+  }
+}
+
+.debug {
+  @apply border border-black;
+}

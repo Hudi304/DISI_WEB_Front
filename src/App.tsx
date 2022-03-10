@@ -15,9 +15,9 @@ export const App = (props: any) => {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/main/*" element={<Main />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/doctor" element={<Doctor />} />
-        <Route path="/user" element={<User />} />
+        {/* <Route path="/admin" element={<Admin />} /> */}
+        {/* <Route path="/doctor" element={<Doctor />} /> */}
+        {/* <Route path="/user" element={<User />} /> */}
         <Route path="/reset-password" element={<ResetPassword/>}/>
       </Routes>
     </Router>
