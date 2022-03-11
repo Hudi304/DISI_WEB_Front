@@ -51,7 +51,7 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
   }
 
   function redirectsToResetPassword() {
-    navigate("/reset-password");
+    navigate("/forgot-password");
   }
 
   return (
