@@ -27,7 +27,7 @@ export const Admin = () => {
       <NavBar buttons={navButtons} />
       ADMIN PAGE
       <Routes>
-        <Route path="/" element={<Navigate replace to={`${location.pathname}/users`} />} />
+        <Route path={`${location.pathname}`} element={<Navigate replace to={`${location.pathname}/users`} />} />
         <Route path="/users" element={<AdminUsers />} /> //? asta nu exista
         <Route path="/doctors" element={<AdminDoctors />} />
         <Route path="/donations" element={<AdminDonations />} />

@@ -1,24 +1,7 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
+import { MyProfileInput, MyProfileSelect } from "./my-profile-input";
+import { BLOOD_TYPES, SEXES } from "./my-profile-utils";
 import "./my-profile.scss";
-
-const BLOOD_TYPES = [
-  {
-    value: "A+",
-    label: "A-",
-  },
-  {
-    value: "B+",
-    label: "B-",
-  },
-  {
-    value: "O+",
-    label: "O-",
-  },
-  {
-    value: "AB+",
-    label: "AB-",
-  },
-];
 
 type UserProfileParameterProps = {
   title: string;
@@ -32,7 +15,6 @@ export const UserProfileParameter = ({ title, value }: UserProfileParameterProps
     <div className="flex items-center justify-center">
       <div className="user-profile-parameter debug">
         <div className="title">{title}</div>
-
         <div className="loading-bar-container debug ">
           <div className="loading-bar" style={{ width: `${value}%` }}></div>
         </div>
@@ -46,67 +28,39 @@ export const MyProfile = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [weight, setWeight] = useState("");
+  const [age, setAge] = useState("");
+
+  const [bloodType, setBloodType] = useState("");
+  const [sex, setSex] = useState("");
 
   return (
     <div className="my-profile-page-container">
       <div className="my-profile-side-bar debug">
-        <div className="grid grid-rows-2 p-4">
-          <label>First Name</label>
-          <input
-            className="rounded-md"
-            name="firstName"
-            value={firstName}
-            onChange={(e) => {
-              setFirstName(e.target.value);
-            }}
-          />
-        </div>
-        <div className="grid grid-rows-2 p-4">
-          <label>Last Name</label>
-          <input
-            className="rounded-md"
-            name="lastName"
-            value={lastName}
-            onChange={(e) => {
-              setLastName(e.target.value);
-            }}
-          />
-        </div>
-        <div className="grid grid-rows-2 p-4">
-          <label>CNP</label>
-          <input
-            className="rounded-md"
-            name="CNP"
-            value={cnp}
-            onChange={(e) => {
-              setCnp(e.target.value);
-            }}
-          />
-        </div>
+        <MyProfileInput title="First Name" value={firstName} setValue={setFirstName} />
+        <MyProfileInput title="Last Name" value={lastName} setValue={setLastName} />
+        <MyProfileInput title="CNP" value={cnp} setValue={setCnp} />
+        <MyProfileInput title="Weight" value={weight} setValue={setWeight} />
+        <MyProfileInput title="Age" value={age} setValue={setAge} />
+        <MyProfileSelect title="Sex" onChange={setSex} options={SEXES} />
+        <MyProfileSelect title="Blood Type" onChange={setBloodType} options={BLOOD_TYPES} />
 
-        <div className="grid grid-rows-2 p-4">
-          <label>Weight</label>
-          <input
-            className="rounded-md"
-            name="weight"
-            value={weight}
-            onChange={(e) => {
-              setWeight(e.target.value);
-            }}
-          />
-        </div>
+        <button
+          onClick={(e) => {
+            const personalInfo = {
+              firstName,
+              lastName,
+              cnp,
+              weight,
+              age,
+              bloodType,
+              sex,
+            };
 
-        <select
-          name="cars"
-          id="cars"
-          onChange={(e) => {
-            console.log(e.target.value);
+            console.log("onSave : ", personalInfo);
           }}
         >
-          {BLOOD_TYPES.map((type, index) => {
-            return <option value={type.value}>{type.label}</option>;
-          })}
-        </select>
+          save
+        </button>
       </div>
       <div className="flex items-center justify-start pl-7">
         <div className="my-profile-page debug">
