@@ -34,9 +34,21 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
     console.log("userInfo : ", userInfo?.user);
     localStorage.setItem("userInfo", userInfo?.user);
 
-    if (userInfo?.user?.role === "ADMIN") {
-      navigate("/main/admin");
-      userInfo = undefined;
+    const role = userInfo?.user?.role;
+
+    switch (role) {
+      case "ADMIN":
+        navigate("/main/admin");
+        userInfo = undefined;
+        break;
+
+      case "NORMAL":
+        navigate("/main/user");
+        userInfo = undefined;
+        break;
+
+      default:
+        break;
     }
   }, [userInfo]);
 

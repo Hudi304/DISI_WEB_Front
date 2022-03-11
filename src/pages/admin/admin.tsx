@@ -1,6 +1,6 @@
 import { ICONS } from "components/icon/icon";
 import { NavBar, NavBarBtn } from "components/nav-bar/nav-bar";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AdminDoctors } from "./admin-doctors/admin-doctors";
 import { AdminDonations } from "./admin-donations/admin-donations";
 import { AdminUsers } from "./admin-users/admdin-users";
@@ -19,21 +19,23 @@ const navButtons: NavBarBtn[] = [
 // add doctor 👙
 // data chats 👙
 
-export const Admin = () => (
-  <div className="admin-page">
-    <NavBar buttons={navButtons} />
-    ADMIN PAGE
-    <Routes>
-      <Route path="/users" element={<AdminUsers />} /> //? asta nu exista
-      <Route path="/doctors" element={<AdminDoctors />} />
-      <Route path="/donations" element={<AdminDonations />} />
-      {/* <Route path="/centers" element={<AdminCenters />} /> */}
-      {/* <Route path="/charts" element={<AdminDataCharts />} /> */}
-      {/* <Route path="/news" element={<AdminNews />} /> */}
-      {/* <Route path="/requirements" element={<AdminRequirements />} /> */}
+export const Admin = () => {
+  const location = useLocation();
 
-
-
-    </Routes>
-  </div>
-);
+  return (
+    <div className="admin-page">
+      <NavBar buttons={navButtons} />
+      ADMIN PAGE
+      <Routes>
+        <Route path="/" element={<Navigate replace to={`${location.pathname}/users`} />} />
+        <Route path="/users" element={<AdminUsers />} /> //? asta nu exista
+        <Route path="/doctors" element={<AdminDoctors />} />
+        <Route path="/donations" element={<AdminDonations />} />
+        {/* <Route path="/centers" element={<AdminCenters />} /> */}
+        {/* <Route path="/charts" element={<AdminDataCharts />} /> */}
+        {/* <Route path="/news" element={<AdminNews />} /> */}
+        {/* <Route path="/requirements" element={<AdminRequirements />} /> */}
+      </Routes>
+    </div>
+  );
+};
