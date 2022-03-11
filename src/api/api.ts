@@ -43,11 +43,7 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
           console.log("Request failed with status 404  NOT FOUND ");
           return Promise.resolve({message: error.message, status: error.response.status});
       }
-      // if (error.response.status === 401) {
-      //   console.log("Request failed with status 401  Unauthorized ");
-      //   clearToken();
-      // }
-      return Promise.resolve(error);
+      return Promise.resolve({ message: error, status: error.response.status });
     }
   );
 
