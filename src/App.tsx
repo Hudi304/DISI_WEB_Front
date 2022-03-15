@@ -15,6 +15,7 @@ export const App = (props: any) => {
         <Route path="/main/*" element={<Main />} />
         <Route path="/forgot-password" element={<ForgotPassword/>}/>
         <Route path="/reset-password" element={<ResetPassword/>}/>
+        
       </Routes>
     </Router>
   );
