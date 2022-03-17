@@ -38,6 +38,11 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
       navigate("/main/admin");
       userInfo = undefined;
     }
+
+    if (userInfo?.user?.role === "NORMAL") {
+      navigate("/main/user");
+      userInfo = undefined;
+    }
   }, [userInfo]);
 
   function onSubmit(values: any) {
