@@ -1,0 +1,10 @@
+.map-container {
+  @apply grid;
+  grid-template-columns: 85% 15%;
+  width: 85vw;
+  height: 85vh;
+}
+
+.map {
+  @apply border-gray-900 border-4 rounded-lg w-full h-full;
+}
