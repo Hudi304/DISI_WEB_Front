@@ -12,9 +12,9 @@ export const AdminNewsfeed = () => {
   return (
     <div className="my-profile-page-container">
       <div className="my-profile-side-bar debug">
-        <div className="grid grid-rows-2">
-          <form>
-          <label>Title</label>
+        <div className="grid grid-rows-12">
+          <form className="pl-10">
+            <label>Title</label>
             <input
               name="title"
               value={title}
@@ -32,10 +32,13 @@ export const AdminNewsfeed = () => {
               }}
             />
             <br/>
-            <input
-              type="submit"
-              value="Post"
-            />
+            <div className="flex items-center justify-center">
+              <input
+                className="mt-5 px-3"
+                type="submit"
+                value="Post"
+              />
+            </div>
           </form>
         </div>
       </div>
