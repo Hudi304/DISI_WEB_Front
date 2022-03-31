@@ -26,14 +26,14 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
     (response) => {
       console.log("response 🔥 : ", response.data);
       if (response?.data?.token) {
-        setToken(response.data.token);
+        setToken(response?.data?.token);
         // console.log("setToken : ", response.data);
       }
-      return Promise.resolve(response.data);
+      return Promise.resolve(response?.data);
     },
     (error) => {
       // console.log("Error : ", error);
-      switch (error.response.status){
+      switch (error?.response?.status){
         case 401:
           console.log("Request failed with status 401  Unauthorized ");
           clearToken();
@@ -41,9 +41,9 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
 
         case 404:
           console.log("Request failed with status 404  NOT FOUND ");
-          return Promise.resolve({message: error.message, status: error.response.status});
+          return Promise.resolve({message: error?.message, status: error?.response?.status});
       }
-      return Promise.resolve({ message: error, status: error.response.status });
+      return Promise.resolve({ message: error, status: error?.response?.status });
     }
   );
 
