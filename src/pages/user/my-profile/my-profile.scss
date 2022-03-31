@@ -1,0 +1,36 @@
+.my-profile-page-container {
+  @apply grid;
+  grid-template-columns: 25% 75%;
+  height: calc(100vh - 160px);
+
+  .my-profile-side-bar {
+    @apply bg-tertiary-300;
+  }
+
+  .my-profile-page {
+    @apply grid h-full w-max gap-3 p-3;
+
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto auto auto;
+
+    .user-profile-parameter {
+      @apply w-72 bg-secondary-300 rounded-md p-4;
+
+      .title {
+        @apply text-title-3 font-semibold;
+      }
+
+      .loading-bar-container {
+        @apply w-full bg-white rounded-md;
+
+        .loading-bar {
+          @apply bg-green-700 h-5 rounded-md;
+        }
+      }
+    }
+  }
+}
+
+.debug {
+  // @apply border border-black;
+}

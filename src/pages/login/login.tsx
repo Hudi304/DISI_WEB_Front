@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import "./login.scss";
 import * as yup from "yup";
 
@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { LoginRequest } from "common/models/LoginRequest";
 
 import { LoginLogo } from "../../assets/icons/saving-lives-login-logo";
+import { clearToken } from "api/api";
 
 const schema = yup.object({});
 
@@ -20,6 +21,9 @@ type Props = ReturnType<typeof mapProps> & ReturnType<typeof mapDispatch>;
 
 const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
   const navigate = useNavigate();
+
+  const [error, setError] = useState(false);
+  clearToken();
 
   const methods = useForm({
     mode: "onChange",
@@ -34,8 +38,29 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
     console.log("userInfo : ", userInfo?.user);
     localStorage.setItem("userInfo", userInfo?.user);
 
-    if (userInfo?.user?.role === "ADMIN") {
-      navigate("/main/admin");
+    if (userInfo == 401) {
+      setError(true);
+    }
+
+    const role = userInfo?.user?.role;
+
+    switch (role) {
+      case "ADMIN":
+        navigate("/main/admin");
+        userInfo = undefined;
+        break;
+
+      case "NORMAL":
+        navigate("/main/user");
+        userInfo = undefined;
+        break;
+
+      default:
+        break;
+    }
+
+    if (userInfo?.user?.role === "NORMAL") {
+      navigate("/main/user");
       userInfo = undefined;
     }
   }, [userInfo]);
@@ -51,7 +76,7 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
   }
 
   function redirectsToResetPassword() {
-    navigate("/reset-password");
+    navigate("/forgot-password");
   }
 
   return (
@@ -60,6 +85,7 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
         <div className="login-card-container">
           <Card className="login-card">
             Login Page
+            {error && <div className="w-32 text-footnote font-semibold text-red-700">Invalid credentials!</div>}
             <FormProvider {...methods}>
               <form onSubmit={methods.handleSubmit(onSubmit)}>
                 <Input name="email" defaultValue="" label="Email" required={true} />
