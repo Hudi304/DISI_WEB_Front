@@ -1,9 +1,23 @@
 .navbar-container {
   @apply grid w-full;
-  // width: 100vw;
 
-  .appbar {
-    @apply w-full h-20 bg-white;
+  .appBar {
+    @apply w-full h-20 bg-white flex justify-end items-center pr-3;
+
+    .logOut-btn {
+      @apply text-sub-headline 
+      text-secondary-700 
+      font-bold border 
+      border-secondary-800 
+      rounded-md
+      p-2;
+    }
+    .logOut-btn:hover {
+      @apply bg-secondary-100;
+    }
+    .logOut-btn:active {
+      @apply bg-secondary-200;
+    }
   }
 
   .navbar {
