@@ -11,8 +11,8 @@ import { ReqDonation } from "./requirements-for-donation/requirements-for-donati
 
 const navButtons: NavBarBtn[] = [
   { icon: ICONS.USER, name: "Users", path: "/main/admin/users" },
-  { icon: ICONS.USER, name: "Doctors", path: "/main/admin/doctors" },
-  { icon: ICONS.USER, name: "Donations", path: "/main/admin/donations" },
+  // { icon: ICONS.USER, name: "Doctors", path: "/main/admin/doctors" },
+  // { icon: ICONS.USER, name: "Donations", path: "/main/admin/donations" },
   { icon: ICONS.USER, name: "Newsfeed", path: "/main/admin/newsfeed" },
   { icon: ICONS.CLIPBOARD_LIST, name: "Centers", path: "/main/admin/centers" },
   { icon: ICONS.CLIPBOARD_LIST, name: "Donation Requirements", path: "/main/admin/requirements-for-donation" },

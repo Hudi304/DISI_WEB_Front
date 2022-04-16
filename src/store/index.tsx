@@ -5,8 +5,9 @@ import loadingPlugin, { ExtraModelsFromLoading } from "@rematch/loading";
 
 import login from "./login";
 import signUp from "./sign-up";
-import forgotPassword from "./forgot-password"
+import forgotPassword from "./forgot-password";
 import resetPassword from "./reset-password";
+import reqDonation from "./req-donation";
 
 interface RootModel extends Models<RootModel> {
   // auth: typeof auth;
@@ -14,6 +15,7 @@ interface RootModel extends Models<RootModel> {
   signUp: typeof signUp;
   forgotPassword: typeof forgotPassword;
   resetPassword: typeof resetPassword;
+  reqDonation: typeof reqDonation;
 }
 
 type FullModel = ExtraModelsFromLoading<RootModel>;
@@ -24,6 +26,7 @@ const models = {
   signUp,
   forgotPassword,
   resetPassword,
+  reqDonation,
 } as RootModel;
 
 const store = init<RootModel, FullModel>({

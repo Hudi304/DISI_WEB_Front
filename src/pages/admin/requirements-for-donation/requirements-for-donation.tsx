@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { RootDispatch, RootState } from "store";
 import { useNavigate } from "react-router-dom";
 import { Card } from "components/card/card";
-import { FormProvider, useForm, useFormContext } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button/button";
 import MultiRangeSlider from "./multislider";
@@ -16,7 +16,7 @@ import { DonationRequirementsDTO } from "common/models/DonationRequirementsDTO";
 
 const schema = yup.object({});
 
-interface Option {
+export interface Option {
     value: any;
     label: string | React.ReactNode;
     disabled?: boolean;

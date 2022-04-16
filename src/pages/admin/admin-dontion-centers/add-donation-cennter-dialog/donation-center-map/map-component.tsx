@@ -3,6 +3,8 @@ import { Button } from "components/button/button";
 import { useState } from "react";
 import { Marker } from "./marker";
 import { Map } from "./map";
+import { SimpleSelect } from "components/form-components/select/select";
+import { CityOptions } from "../../admin-dontation-centers-constants";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -16,6 +18,8 @@ export const MapForm = () => {
   const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
   const [zoom, setZoom] = useState(initialZoom);
   const [donationCenterName, setDonationCenterName] = useState("");
+
+  const [city, setCity] = useState("");
 
   const [center, setCenter] = useState<google.maps.LatLngLiteral>({
     lat: initialLatitude,
@@ -71,6 +75,16 @@ export const MapForm = () => {
       })}
 
       {clicks.length > 0 ? <Button onClick={() => setClicks([])}>Clear</Button> : null}
+
+      <SimpleSelect
+        className="select-size"
+        options={CityOptions}
+        value={city}
+        onChange={(e) => {
+          console.log(e);
+          // setCity;
+        }}
+      />
     </div>
   );
 

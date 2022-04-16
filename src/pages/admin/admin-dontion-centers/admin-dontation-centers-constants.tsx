@@ -1,6 +1,6 @@
 import { Button } from "components/button/button";
-import { Icon, ICONS } from 'components/icon/icon';
-import { EditDonationCenterDialog } from './edit-donation-center-dialog/edit-donation-center-dialog';
+import { Icon, ICONS } from "components/icon/icon";
+import { EditDonationCenterDialog } from "./edit-donation-center-dialog/edit-donation-center-dialog";
 
 export function getAdminTableColumns(setModal: (e: any) => void) {
   return [
@@ -53,3 +53,32 @@ export function getAdminTableColumns(setModal: (e: any) => void) {
     },
   ];
 }
+
+export interface Option {
+  value: any;
+  label: string | React.ReactNode;
+  disabled?: boolean;
+}
+
+export const CityOptions: Option[] = [
+  {
+    value: "Cluj-Napoca",
+    label: "Cluj-Napoca",
+    disabled: false,
+  },
+  {
+    value: "Iasi",
+    label: "Iasi",
+    disabled: false,
+  },
+  {
+    value: "Timisoara",
+    label: "Timisoara",
+    disabled: false,
+  },
+  {
+    value: "Bucuresti",
+    label: "Bucuresti",
+    disabled: false,
+  },
+];
