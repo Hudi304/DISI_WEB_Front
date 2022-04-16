@@ -5,6 +5,7 @@ import { Marker } from "./marker";
 import { Map } from "./map";
 import { SimpleSelect } from "components/form-components/select/select";
 import { CityOptions } from "../../admin-dontation-centers-constants";
+import { Icon, ICONS } from "components/icon/icon";
 
 const render = (status: Status) => {
   return <h1>{status}</h1>;
@@ -34,6 +35,10 @@ export const MapForm = () => {
     setZoom(m.getZoom()!);
     setCenter(m.getCenter()!.toJSON());
   };
+
+  function onSubmit() {
+    console.log("submit");
+  }
 
   const form = (
     <div
@@ -66,25 +71,33 @@ export const MapForm = () => {
         const lat = latLng.toJSON().lat;
         const lng = latLng.toJSON().lng;
         return (
-          <div key={i} className="donation-cent-mark">
-            <div>Donation Center Marker</div>
-            <div className="ml-3">{`Lat: ${lat}`}</div>
-            <div className="ml-3">{`Lng : ${lng}`}</div>
+          <div key={i} className="flex">
+            <div>
+              <div>Donation Center Marker</div>
+              <div className="ml-3">{`Lat: ${lat}`}</div>
+              <div className="ml-3">{`Lng : ${lng}`}</div>
+            </div>
+            <Button className="mt-3 ml-auto bg-red-700" onClick={() => setClicks([])}>
+              <Icon icon={ICONS.DELETE} />
+            </Button>
           </div>
         );
       })}
 
-      {clicks.length > 0 ? <Button onClick={() => setClicks([])}>Clear</Button> : null}
-
+      <h3 className="text-headline font-semibold text-black">City</h3>
       <SimpleSelect
-        className="select-size"
+        className="w-64 pt-3"
         options={CityOptions}
         value={city}
         onChange={(e) => {
           console.log(e);
-          // setCity;
         }}
       />
+      <div className="w-ful flex mt-2">
+        <Button className="ml-auto" onClick={onSubmit}>
+          Submit
+        </Button>
+      </div>
     </div>
   );
 

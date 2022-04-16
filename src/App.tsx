@@ -1,11 +1,16 @@
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { Main } from "pages/main/main";
 import { SignUp } from "pages/sign-up/sign-up";
 import { ForgotPassword } from "pages/reset-password/forgot-password";
-import { Login } from 'pages/login/login';
+import { Login } from "pages/login/login";
 import { ResetPassword } from "pages/reset-password/reset-password";
+import { RootState } from "store";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export const App = (props: any) => {
+
+
   return (
     <Router>
       <Routes>
@@ -13,9 +18,8 @@ export const App = (props: any) => {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/main/*" element={<Main />} />
-        <Route path="/forgot-password" element={<ForgotPassword/>}/>
-        <Route path="/reset-password" element={<ResetPassword/>}/>
-        
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </Router>
   );
