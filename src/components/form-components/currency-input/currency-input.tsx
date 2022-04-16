@@ -39,7 +39,7 @@ export const CurrencyInput = ({
       required={required}
       className={className}
     >
-      <NumberFormat
+      {/* <NumberFormat
         thousandSeparator={true}
         prefix={prefix}
         disabled={disabled}
@@ -49,7 +49,7 @@ export const CurrencyInput = ({
         onValueChange={(values) => handleSelect(values.value)}
         {...register(name, { required })}
         className={`base-input ${className} ${errors[name] ? 'error' : ''}`}
-      />
+      /> */}
     </BaseFormComponent>
   );
 };
