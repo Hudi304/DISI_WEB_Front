@@ -15,12 +15,12 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
   axiosInstance.interceptors.response.use(
     (response) => {
       if (response?.data?.token) {
-        setToken(response.data.token);
+        setToken(response?.data?.token);
       }
-      return Promise.resolve(response.data);
+      return Promise.resolve(response?.data);
     },
     (error) => {
-      switch (error.response.status) {
+      switch (error?.response?.status) {
         case 401:
           console.log("Request failed with status 401  Unauthorized ");
           clearToken();
@@ -28,9 +28,9 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
 
         case 404:
           console.log("Request failed with status 404  NOT FOUND ");
-          return Promise.resolve({ message: error.message, status: error.response.status });
+          return Promise.resolve({ message: error?.message, status: error?.response?.status });
       }
-      return Promise.resolve({ message: error, status: error.response.status });
+      return Promise.resolve({ message: error, status: error?.response?.status });
     }
   );
 
