@@ -16,7 +16,7 @@ export const AdminNewsfeed = () => {
           <div className="grid grid-rows-12">
             <form className="px-10">
               <br/>
-              <label className="px-2">Title</label>
+              <label className="px-2 text-headline font-bold">Title</label>
               <input
                 name="title"
                 value={title}
@@ -26,7 +26,7 @@ export const AdminNewsfeed = () => {
               />
               <br/>
               <br/>
-              <label className="px-2">Text</label>
+              <label className="px-2 text-headline font-bold">Text</label>
               <input
                 name="text"
                 value={text}
@@ -48,33 +48,4 @@ export const AdminNewsfeed = () => {
       </div>
     </div>
   )
-  
-  // <div className="admin-page">
-  //   <div className="users-table-container">
-  //     <Card className="login-card">
-  //       Information Posting
-  //       {/* <FormProvider {...}> */}
-  //       <input id="title" name="title"></input>
-  //       <label for="title"></label>
-
-
-
-  //       {/* </FormProvider> */}
-  //       {/* <FormProvider {...methods}>
-  //         <form onSubmit={methods.handleSubmit(onSubmit)}>
-  //           <Input name="email" defaultValue="" label="Email" required={true} />
-  //           <Input name="password" defaultValue="Password" label="Password" required={true} />
-  //           <div className="login-buttons-bar">
-  //             <Button onClick={redirectsToSignUp}>Sign up</Button>
-  //             <Button type="submit">Login</Button>
-  //           </div>
-  //           <button className="reset-pass-btn" type="button" onClick={redirectsToResetPassword}>
-  //             Forgot your password?
-  //           </button>
-  //         </form>
-  //       </FormProvider> */}
-  //     </Card>
-  //   </div>
-  // </div>
-  
 };
