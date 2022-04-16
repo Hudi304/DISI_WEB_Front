@@ -1,52 +1,42 @@
 import axios from "axios";
-
 export const ACCESS_TOKEN = "access_token";
-
-// const cs_API_URL = process.env.REACT_APP_API_URL;
 const API_URL = "https://matei-anechitei-ds-2.herokuapp.com";
 
 export const API = (baseURL = API_URL, callOptions: any = {}): any => {
   const options = { headers: {}, baseURL, ...callOptions };
   const axiosInstance = axios.create(options);
-  const tokenLS = getAccessToken();
-  const token = JSON.parse(tokenLS || "{}");
+  const token = getAccessToken();
 
   const getTk = getAccessToken();
 
   console.log("auth headers", token);
   console.log("getTk", getTk);
 
-  if (typeof token == "string") {
+  // if (typeof token == "string") {
+  if (typeof token == "string" && token != "") {
     axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
     console.log("bearer");
   }
 
-  // console.log("API invocation");
-  // console.log("baseURL : ", baseURL);
-  // console.log("callOptions : ", callOptions);
-
   axiosInstance.interceptors.response.use(
     (response) => {
-      console.log("response 🔥 : ", response.data);
       if (response?.data?.token) {
-        setToken(response.data.token);
-        console.log("setToken : ", response.data);
+        setToken(response?.data?.token);
       }
-      return Promise.resolve(response.data);
+      return Promise.resolve(response?.data);
     },
     (error) => {
-      // console.log("Error : ", error);
       switch (error?.response?.status) {
         case 401:
           console.log("Request failed with status 401  Unauthorized ");
           clearToken();
-          return Promise.resolve(error);
+          return Promise.resolve(error.response.status);
 
         case 404:
           console.log("Request failed with status 404  NOT FOUND ");
-          return Promise.resolve({ message: error.message, status: error.response.status });
+          return Promise.resolve({ message: error?.message, status: error?.response?.status });
       }
-      return Promise.resolve({ message: error, status: error.response.status });
+      return Promise.resolve({ message: error, status: error?.response?.status });
     }
   );
 
@@ -61,6 +51,6 @@ function getAccessToken() {
   return localStorage.getItem(ACCESS_TOKEN);
 }
 
-function clearToken() {
+export function clearToken() {
   localStorage.removeItem(ACCESS_TOKEN);
 }
