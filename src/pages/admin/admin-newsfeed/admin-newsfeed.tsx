@@ -8,14 +8,14 @@ import { FormProvider } from "react-hook-form";
 export const AdminNewsfeed = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  
+
   return (
     <div className="flex items-center justify-center ">
       <div className="my-profile-page-container-without-grid-template ">
         <div className="my-profile-side-bar debug">
           <div className="grid grid-rows-12">
             <form className="px-10">
-              <br/>
+              <br />
               <label className="px-2 text-headline font-bold">Title</label>
               <input
                 name="title"
@@ -24,8 +24,8 @@ export const AdminNewsfeed = () => {
                   setTitle(e.target.value);
                 }}
               />
-              <br/>
-              <br/>
+              <br />
+              <br />
               <label className="px-2 text-headline font-bold">Text</label>
               <input
                 name="text"
@@ -34,18 +34,14 @@ export const AdminNewsfeed = () => {
                   setText(e.target.value);
                 }}
               />
-              <br/>
+              <br />
               <div className="flex items-center justify-center">
-                <input
-                  className="mt-5 px-3"
-                  type="submit"
-                  value="Post"
-                />
+                <input className="mt-5 px-3" type="submit" value="Post" />
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 };

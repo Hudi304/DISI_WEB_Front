@@ -5,7 +5,7 @@ import { PasswordResetRequest } from "common/models/PasswordResetRequest";
 type State = Readonly<{
     resetPassword: any; //! 🤖 ar trebui sa fie de tip Login response da'nu e definit pe server inca
     resetPasswordResponse: any;
-  }>;
+}>;
 
 const model = {
     state: {

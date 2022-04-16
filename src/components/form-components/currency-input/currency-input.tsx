@@ -27,7 +27,12 @@ export const CurrencyInput = ({ placeholder, label, name, disabled, className, r
   };
 
   return (
-    <BaseFormComponent name={name} label={label} required={required} className={className}>
+    <BaseFormComponent
+      name={name}
+      label={label}
+      required={required}
+      className={className}
+    >
       {/* <NumberFormat
         thousandSeparator={true}
         prefix={prefix}

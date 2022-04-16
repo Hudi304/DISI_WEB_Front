@@ -8,6 +8,12 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
   const axiosInstance = axios.create(options);
   const token = getAccessToken();
 
+  const getTk = getAccessToken();
+
+  console.log("auth headers", token);
+  console.log("getTk", getTk);
+
+  // if (typeof token == "string") {
   if (typeof token == "string" && token != "") {
     axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
     console.log("bearer");

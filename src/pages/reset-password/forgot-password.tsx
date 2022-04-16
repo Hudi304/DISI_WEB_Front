@@ -42,7 +42,6 @@ const ForgotPasswordComponent: FC<Props>= ({forgotPasswordCall, forgotPasswordRe
           countOption: "",
         },
       });
-
     function forgotPasswordSubmit(values:any){
         console.log("Forgot password mail", values)
         const passwordRequest = {email: values.email};
