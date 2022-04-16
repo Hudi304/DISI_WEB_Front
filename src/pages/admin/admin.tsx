@@ -7,6 +7,7 @@ import { AdminNewsfeed } from "./admin-newsfeed/admin-newsfeed";
 import { AdminUsers } from "./admin-users/admin-users";
 import { AdminDonationCenters } from "./admin-dontion-centers/admin-donation-centers";
 import "./admin.scss";
+import { ReqDonation } from "./requirements-for-donation/requirements-for-donation";
 
 const navButtons: NavBarBtn[] = [
   { icon: ICONS.USER, name: "Users", path: "/main/admin/users" },
@@ -14,6 +15,7 @@ const navButtons: NavBarBtn[] = [
   { icon: ICONS.USER, name: "Donations", path: "/main/admin/donations" },
   { icon: ICONS.USER, name: "Newsfeed", path: "/main/admin/newsfeed" },
   { icon: ICONS.CLIPBOARD_LIST, name: "Centers", path: "/main/admin/centers" },
+  { icon: ICONS.CLIPBOARD_LIST, name: "Donation Requirements", path: "/main/admin/requirements-for-donation" },
 ];
 
 // Donation center list  👙
@@ -36,9 +38,8 @@ export const Admin = () => {
         <Route path="/donations" element={<AdminDonations />} />
         <Route path="/centers" element={<AdminDonationCenters />} />
         <Route path="/newsfeed" element={<AdminNewsfeed />} />
+        <Route path="/requirements-for-donation" element={<ReqDonation />} />
         {/* <Route path="/charts" element={<AdminDataCharts />} /> */}
-        {/* <Route path="/news" element={<AdminNews />} /> */}
-        {/* <Route path="/requirements" element={<AdminRequirements />} /> */}
       </Routes>
     </div>
   );
