@@ -1,10 +1,40 @@
-.map-container {
+.add-donation-center-container {
   @apply grid;
-  grid-template-columns: 85% 15%;
-  width: 85vw;
-  height: 85vh;
-}
+  grid-template-rows: 50px auto;
 
-.map {
-  @apply border-gray-900 border-4 rounded-lg w-full h-full;
+  .add-center-title {
+    @apply bg-red-600 text-title-2 text-white flex items-center pl-3 font-bold rounded-2xl;
+  }
+
+  .add-center-body {
+    @apply px-4 pb-3 mt-3;
+    width: 720px;
+
+    .map-container {
+      @apply grid;
+      grid-template-columns: 400px 300px;
+
+      .map-form {
+        @apply p-3 ml-3 bg-gray-100 rounded-md;
+
+        .input {
+          @apply rounded-lg border-red-700 border;
+
+          &:focus {
+            @apply border-red-700 border-2;
+          }
+        }
+
+        .donation-cent-mark {
+          @apply text-headline;
+        }
+      }
+    }
+
+    .map {
+      @apply rounded-lg w-96 h-96;
+      width: 400px;
+      height: 400px;
+    }
+  }
 }

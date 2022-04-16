@@ -10,11 +10,13 @@ const render = (status: Status) => {
 
 const initialLatitude = 45.8;
 const initialLongitude = 24.8;
-const initialZoom = 7;
+const initialZoom = 6;
 
 export const MapForm = () => {
   const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
   const [zoom, setZoom] = useState(initialZoom);
+  const [donationCenterName, setDonationCenterName] = useState("");
+
   const [center, setCenter] = useState<google.maps.LatLngLiteral>({
     lat: initialLatitude,
     lng: initialLongitude,
@@ -32,33 +34,43 @@ export const MapForm = () => {
   const form = (
     <div
       style={{
-        padding: "1rem",
-        flexBasis: "250px",
         height: "100%",
-        overflow: "auto",
-        width: "250px",
+        width: "280px",
       }}
+      className="map-form"
     >
+      <h3 className="text-headline font-semibold text-black">Name</h3>
+      <input
+        className="input"
+        placeholder="Center Name"
+        type="text"
+        id="name"
+        name="name"
+        value={donationCenterName}
+        onChange={(event) => setDonationCenterName(event.target.value)}
+      />
+      <h3 className="text-headline font-semibold text-black">Click on map to add Donation Center marker</h3>
       <label htmlFor="zoom">Zoom</label>
-      <input type="number" id="zoom" name="zoom" value={zoom} onChange={(event) => setZoom(Number(event.target.value))} />
+      <input className="input" type="number" id="zoom" name="zoom" value={zoom} onChange={(event) => setZoom(Number(event.target.value))} />
       <br />
-      <label htmlFor="lat">Latitude</label>
-      <input type="number" id="lat" name="lat" value={center.lat} onChange={(event) => setCenter({ ...center, lat: Number(event.target.value) })} />
+      <label htmlFor="lat">Map Latitude</label>
+      <input className="input" type="number" id="lat" name="lat" value={center.lat} onChange={(event) => setCenter({ ...center, lat: Number(event.target.value) })} />
       <br />
-      <label htmlFor="lng">Longitude</label>
-      <input type="number" id="lng" name="lng" value={center.lng} onChange={(event) => setCenter({ ...center, lng: Number(event.target.value) })} />
-      <h3>{clicks.length === 0 ? "Click on map to add markers" : "Clicks"}</h3>
+      <label htmlFor="lng">Map Longitude</label>
+      <input className="input" type="number" id="lng" name="lng" value={center.lng} onChange={(event) => setCenter({ ...center, lng: Number(event.target.value) })} />
       {clicks.map((latLng, i) => {
         const lat = latLng.toJSON().lat;
         const lng = latLng.toJSON().lng;
         return (
-          <div>
-            <div>{`Latitude : ${lat}`}</div>
-            <div>{`Longitude : ${lng}`}</div>
+          <div key={i} className="donation-cent-mark">
+            <div>Donation Center Marker</div>
+            <div className="ml-3">{`Lat: ${lat}`}</div>
+            <div className="ml-3">{`Lng : ${lng}`}</div>
           </div>
         );
       })}
-      <Button onClick={() => setClicks([])}>Clear</Button>
+
+      {clicks.length > 0 ? <Button onClick={() => setClicks([])}>Clear</Button> : null}
     </div>
   );
 
