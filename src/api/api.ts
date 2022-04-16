@@ -1,6 +1,7 @@
 import axios from "axios";
 export const ACCESS_TOKEN = "access_token";
 const API_URL = "https://matei-anechitei-ds-2.herokuapp.com";
+// const API_URL = "http://localhost:8081";
 
 export const API = (baseURL = API_URL, callOptions: any = {}): any => {
   const options = { headers: {}, baseURL, ...callOptions };
@@ -30,7 +31,7 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
         case 401:
           console.log("Request failed with status 401  Unauthorized ");
           clearToken();
-          return Promise.resolve(error.response.status);
+          return Promise.resolve(error?.response?.status);
 
         case 404:
           console.log("Request failed with status 404  NOT FOUND ");

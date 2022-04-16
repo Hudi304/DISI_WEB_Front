@@ -5,9 +5,9 @@ import loadingPlugin, { ExtraModelsFromLoading } from "@rematch/loading";
 
 import login from "./login";
 import signUp from "./sign-up";
-import forgotPassword from "./forgot-password"
+import forgotPassword from "./forgot-password";
 import resetPassword from "./reset-password";
-import reqDonation from "./req-donation"
+import reqDonation from "./req-donation";
 
 interface RootModel extends Models<RootModel> {
   // auth: typeof auth;
