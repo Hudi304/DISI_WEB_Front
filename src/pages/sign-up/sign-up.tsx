@@ -54,8 +54,8 @@ const SignUpComponent: FC<Props> = ({ signUpResponse, signUp }: Props) => {
             <Input name="userName" defaultValue="User Name" label="User Name" required={true} />
             <Input name="email" defaultValue="Email" label="Email" required={true} />
 
-            <Input name="password" defaultValue="Password" label="Password" required={true} />
-            <Input name="password" defaultValue="Password" label="Retype Password" required={true} />
+            <Input name="password" type="password" defaultValue="Password" label="Password" required={true} />
+            <Input name="password" type="password" defaultValue="Password" label="Retype Password" required={true} />
 
             <div className="login-buttons-bar">
               <Button type="submit">Sign up</Button>
