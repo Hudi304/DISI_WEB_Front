@@ -19,7 +19,9 @@ export const NavBar = ({ buttons }: NavBarProps) => {
   const location = useLocation();
   return (
     <div className="navbar-container">
-      <div className="appbar"></div>
+      <div className="appBar">
+        <button className="logOut-btn">Logout</button>
+      </div>
       <div className="navbar">
         {buttons.map((btn, index) => (
           <Button

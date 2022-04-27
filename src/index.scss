@@ -42,3 +42,7 @@ body {
   --tertiary-800: #076997;
   --tertiary-900: #00567e;
 }
+
+.debug {
+  @apply border border-black;
+}
