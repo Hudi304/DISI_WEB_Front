@@ -4,6 +4,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import { MyProfile } from "./my-profile/my-profile";
 import { NewsBoard } from "./news-board/news-board";
+import { QrCode } from "./qr-code/qrcode";
 import "./user.scss";
 
 // pages
@@ -13,6 +14,7 @@ import "./user.scss";
 const navButtons: NavBarBtn[] = [
   { icon: ICONS.USER, name: "My Profile", path: "/main/user/my-profile" },
   { icon: ICONS.NEWS, name: "News Board", path: "/main/user/news-board" },
+  { icon: ICONS.VIEW, name: "QrCodes", path: "/main/user/qr-code" },
   // { icon: ICONS.HOME, name: "Donations History", path: "/main/user/donations" },
 ];
 
@@ -26,6 +28,7 @@ export const User = () => {
         <Route path="/" element={<Navigate replace to={`${location.pathname}/my-profile`} />} />
         <Route path="/my-profile" element={<MyProfile />} /> //? asta nu exista
         <Route path="/news-board" element={<NewsBoard />} />
+        <Route path="/qr-code" element={<QrCode />} />
         {/* <Route path="/donations" element={<AdminDonations />} /> */}
       </Routes>
     </div>
