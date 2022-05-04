@@ -1,6 +1,6 @@
 import { ICONS } from "components/icon/icon";
 import { NavBar, NavBarBtn } from "components/nav-bar/nav-bar";
-import { ReqDonation } from "pages/requirements-for-donation/requirements-for-donation";
+import { ReqDonation } from "./requirements-for-donation/requirements-for-donation";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AdminDoctors } from "./admin-doctors/admin-doctors";
 import { AdminDonations } from "./admin-donations/admin-donations";
