@@ -1,0 +1,31 @@
+.qrCode-page-container {
+  @apply grid items-center justify-center overflow-hidden bg-blue-500;
+  grid-template-columns: repeat(2, auto);
+  width: 100vw;
+  height: 100vh;
+  
+  .qr-code-page{
+    grid-template-columns: repeat(3, auto);
+
+    .qr-code{
+        padding: 20px;
+    }
+  }
+  
+
+
+
+  .reset-password-card {
+    .error-message{
+      color: red;
+    }
+    @apply bg-blue-300;
+    .sign-up-form {
+      .login-btn {
+        @apply p-2;
+        color: blue;
+      }
+    }
+  }
+ 
+}
