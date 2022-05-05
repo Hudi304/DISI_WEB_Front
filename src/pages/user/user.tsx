@@ -1,5 +1,6 @@
 import { ICONS } from "components/icon/icon";
 import { NavBar, NavBarBtn } from "components/nav-bar/nav-bar";
+import { AdminDonations } from "pages/admin/admin-donations/admin-donations";
 import { Navigate, useLocation } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import { DonationHistory } from "./donation-history/donation-history";

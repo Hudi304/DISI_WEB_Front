@@ -1,7 +1,10 @@
 import { clearToken } from "api/api";
 import { Button } from "components/button/button";
 import { Icon, ICONS } from "components/icon/icon";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { RootDispatch, RootState } from "store";
 
 import "./nav-bar.scss";
 

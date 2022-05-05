@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button/button";
 import { Card } from "components/card/card";
-import { FC, Props, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import QRCode from "react-qr-code";
 import "./qrcode.scss";
@@ -9,8 +9,6 @@ import * as yup from "yup";
 import { Input } from "components/form-components/input/input";
 
 const schema = yup.object({});
-
-// type Props = ReturnType<typeof mapProps> & ReturnType<typeof mapDispatch>;
 
 export const QrCode: FC = ({}) => {
   const [qrc, setQrc] = useState([""]);
@@ -28,7 +26,6 @@ export const QrCode: FC = ({}) => {
   let qrCodes: string[] = [];
 
   function randomIntFromInterval(min: number, max: number): number {
-    // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
@@ -44,7 +41,6 @@ export const QrCode: FC = ({}) => {
 
   function validateMail(mail: string) {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
     return re.test(mail);
   }
 
@@ -64,16 +60,17 @@ export const QrCode: FC = ({}) => {
   return (
     <div className="qrCode-page-container">
       <div className="qr-code-page">
-        { showQr &&
-        <ul>
-          {qrc.map((qrcode) => {
-            return (
-              <li className="qr-code" key={qrcode}>
-                <QRCode value={qrcode} />
-              </li>
-            );
-          })}
-        </ul>}
+        {showQr && (
+          <ul>
+            {qrc.map((qrcode) => {
+              return (
+                <li className="qr-code" key={qrcode}>
+                  <QRCode value={qrcode} />
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
       <div>
         <Card className="reset-password-card">
