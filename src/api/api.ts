@@ -22,7 +22,9 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
   axiosInstance.interceptors.response.use(
     (response) => {
       if (response?.data?.token) {
+        clearToken()
         setToken(response?.data?.token);
+        
       }
       return Promise.resolve(response?.data);
     },
@@ -45,7 +47,7 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
 };
 
 function setToken(token: string) {
-  localStorage.setItem(ACCESS_TOKEN, JSON.stringify(token));
+  localStorage.setItem(ACCESS_TOKEN, token);
 }
 
 function getAccessToken() {

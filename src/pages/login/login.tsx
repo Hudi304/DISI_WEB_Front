@@ -23,7 +23,7 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
   const navigate = useNavigate();
 
   const [error, setError] = useState(false);
-  clearToken();
+  // clearToken();
 
   const methods = useForm({
     mode: "onChange",
