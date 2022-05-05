@@ -1,3 +1,3 @@
 export const DonationHistory = () => {
-  return <div className="my-profile-page-container">DonationHistory</div>;
+  return <div className="h-full">DonationHistory</div>;
 };

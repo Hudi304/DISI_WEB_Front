@@ -10,6 +10,7 @@ import "./user.scss";
 const navButtons: NavBarBtn[] = [
   { icon: ICONS.USER, name: "My Profile", path: "/main/user/my-profile" },
   { icon: ICONS.NEWS, name: "News Board", path: "/main/user/news-board" },
+  { icon: ICONS.BELL, name: "Donation History", path: "/main/user/donation-history" },
 ];
 
 export const User = () => {
@@ -22,7 +23,7 @@ export const User = () => {
         <Route path="/" element={<Navigate replace to={`${location.pathname}/my-profile`} />} />
         <Route path="/my-profile" element={<MyProfile />} />
         <Route path="/news-board" element={<NewsBoard />} />
-        <Route path="/donations_history" element={<DonationHistory />} />
+        <Route path="/donation-history" element={<DonationHistory />} />
       </Routes>
     </div>
   );

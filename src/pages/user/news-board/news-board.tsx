@@ -41,7 +41,7 @@ export const NewsBoard = () => {
   }, [newsFeed]);
 
   return (
-    <div className="news-board-page-container debug">
+    <div className="news-board-page-container ">
       <div className="mx-14 my-10">
         <Card className="user-news-table-card">
           <Grid columns={tableColumns} data={newsFeedArray} pageSize={500} height={"calc"} itemHeight={48} />
