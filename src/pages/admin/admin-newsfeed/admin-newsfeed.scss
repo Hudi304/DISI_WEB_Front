@@ -1,0 +1,16 @@
+.news-feed-page-container {
+  height: calc(100vh - 200px);
+  @apply grid;
+  grid-template-columns: 1fr 5fr;
+
+  .form-card {
+    @apply bg-primary-400 rounded-md flex flex-col p-3 mx-3 ;
+    height: min-content;
+    width: min-content;
+  }
+
+  .table-card {
+    height: calc(100vh - 210px);
+    @apply px-3 mx-3;
+  }
+}

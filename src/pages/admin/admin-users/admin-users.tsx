@@ -8,7 +8,7 @@ const tableColumns = [
       <Checkbox
         value={false}
         onChange={(event: any) => {
-          console.log("select all");
+          // console.log("select all");
         }}
       />
     ),
@@ -18,7 +18,7 @@ const tableColumns = [
       <Checkbox
         value={false}
         onChange={(event: any) => {
-          console.log("select");
+          // console.log("select");
         }}
       />
     ),
@@ -43,17 +43,7 @@ export const AdminUsers = () => (
   <div className="admin-page">
     <div className="users-table-container">
       <Card>
-        <Grid
-          columns={tableColumns}
-          data={data}
-          // loadData={getAuditCatalogData}
-          pageSize={500}
-          // height={"100%"}
-          itemHeight={48}
-          onRowClick={() => {
-            console.log("on row click");
-          }}
-        />
+        <Grid columns={tableColumns} data={data} pageSize={500} itemHeight={48} />
       </Card>
     </div>
   </div>

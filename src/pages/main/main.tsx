@@ -11,7 +11,7 @@ type Props = ReturnType<typeof mapProps> & ReturnType<typeof mapDispatch>;
 
 const MainComponent: FC<Props> = ({}: Props) => {
   return (
-    <div className="main">
+    <div className="main h-screen">
       <Routes>
         <Route path="/admin/*" element={<Admin />} />
         <Route path="/doctor/*" element={<Doctor />} />

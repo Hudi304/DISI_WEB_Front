@@ -24,16 +24,7 @@ export const AdminDonationCenters = () => {
       </div>
       <div className="users-table-container">
         <Card>
-          <Grid
-            columns={getAdminTableColumns(setModal)}
-            data={DONATION_CENTER_MOCK_DATA}
-            pageSize={500}
-            height={"100%"}
-            itemHeight={48}
-            onRowClick={() => {
-              console.log("on row click");
-            }}
-          />
+          <Grid columns={getAdminTableColumns(setModal)} data={DONATION_CENTER_MOCK_DATA} pageSize={500} height={"100%"} itemHeight={48} />
         </Card>
       </div>
     </div>

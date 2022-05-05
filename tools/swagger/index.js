@@ -17,7 +17,7 @@ const MODELS = "common/models";
 const APIS = "api/endpoints";
 // const SWAGGER_JSON = require('../../swagger.json')
 
-const ENVIRONMENT = argv.env || 'dev';
+// const ENVIRONMENT = argv.env || 'dev';
 
 const apiURL = "https://matei-anechitei-ds-2.herokuapp.com/v3/api-docs"
 

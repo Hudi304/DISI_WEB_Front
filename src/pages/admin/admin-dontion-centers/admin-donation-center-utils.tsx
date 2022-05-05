@@ -40,7 +40,7 @@ export const tableColumns = [
       return (
         <Button
           onClick={(e: any) => {
-            console.log(row);
+            // console.log(row);
           }}
         >
           <Icon icon={ICONS.PENCIL} />

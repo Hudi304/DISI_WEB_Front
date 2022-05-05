@@ -4,7 +4,7 @@ import { ReqDonation } from "./requirements-for-donation/requirements-for-donati
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AdminDoctors } from "./admin-doctors/admin-doctors";
 import { AdminDonations } from "./admin-donations/admin-donations";
-import { AdminNewsfeed } from "./admin-newsfeed/admin-newsfeed";
+import { AdminNewsFeed } from "./admin-newsfeed/admin-newsfeed";
 import { AdminUsers } from "./admin-users/admin-users";
 import { AdminDonationCenters } from "./admin-dontion-centers/admin-donation-centers";
 import "./admin.scss";
@@ -38,8 +38,9 @@ export const Admin = () => {
         <Route path="/doctors" element={<AdminDoctors />} />
         <Route path="/donations" element={<AdminDonations />} />
         <Route path="/centers" element={<AdminDonationCenters />} />
-        <Route path="/newsfeed" element={<AdminNewsfeed />} />
         <Route path="/requirements-for-donation" element={<ReqDonation />} />
+        <Route path="/newsfeed" element={<AdminNewsFeed />} />
+        <Route path="/requirements-donation" element={<ReqDonation />} />
         {/* <Route path="/charts" element={<AdminDataCharts />} /> */}
       </Routes>
     </div>

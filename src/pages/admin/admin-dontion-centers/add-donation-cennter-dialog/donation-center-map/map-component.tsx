@@ -81,8 +81,7 @@ export const MapForm = () => {
         options={CityOptions}
         value={city}
         onChange={(e) => {
-          console.log(e);
-          // setCity;
+          // console.log(e);
         }}
       />
     </div>

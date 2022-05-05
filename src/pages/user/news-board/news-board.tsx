@@ -1,62 +1,52 @@
+import { Card } from "components/card/card";
+import { Grid } from "components/grid/grid";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootDispatch, RootState } from "store";
+import { formatDateFromString } from "utils";
 import "./news-board.scss";
 
+const tableColumns = [
+  {
+    label: "created",
+    accessor: "index",
+    width: "100px",
+    render: (row: any) => <div>{formatDateFromString(row.created)}</div>,
+  },
+  {
+    label: "title",
+    accessor: "index",
+    width: "200px",
+    render: (row: any) => <div>{row.title}</div>,
+  },
+  {
+    label: "description",
+    accessor: "index",
+    width: "",
+    render: (row: any) => <div>{row.description}</div>,
+  },
+];
+
 export const NewsBoard = () => {
-  const [news, setNews] = useState(
-    [
-      { 
-        title: 'News1',
-        text: 'News1 lorem ip Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat debitis nihil ipsa excepturi aut officia quae optio libero? Doloremque sit tenetur quam nobis obcaecati rem saepe quisquam distinctio culpa quis!' 
-      },
-      { 
-        title: 'News2',
-        text: 'News2 lorem ip Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat debitis nihil ipsa excepturi aut officia quae optio libero? Doloremque sit tenetur quam nobis obcaecati rem saepe quisquam distinctio culpa quis!' 
-      },
-      { 
-        title: 'News3',
-        text: 'News3 lorem ip Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat debitis nihil ipsa excepturi aut officia quae optio libero? Doloremque sit tenetur quam nobis obcaecati rem saepe quisquam distinctio culpa quis!' 
-      },
-    ]
-  );
+  const [newsFeedArray, setNewsFeedArray] = useState([]);
+  const getNewsFeed = useDispatch<RootDispatch>().user.getNewsFeed;
+  const newsFeed = useSelector((state: RootState) => state.user.news);
 
   useEffect(() => {
-    const getNews = async () => {
-        // const data = await fetchNews();
-        const data = news;
-        let newData = [{ title: "", text: "" }];
-        data.map((data) => newData = [...newData, data]);
-        setNews(newData);
-    }
-    getNews()
-  }, [news])
+    getNewsFeed();
+  }, []);
 
-  const fetchNews = async () => {
-    const response = await fetch(`<link catre backend>`);
-    const data = await response.json();
-    
-    return data;
-  }
+  useEffect(() => {
+    setNewsFeedArray(newsFeed);
+  }, [newsFeed]);
 
   return (
-    <div className="flex items-center justify-center ">
-      <div className="my-profile-page-container-without-grid-template">
-        <div className="my-profile-side-bar debug">
-          <div className="grid grid-rows-12">
-            <div className={'messages'}>
-              {
-                news.length > 0 ?
-                  news.map((article) => (
-                    <div className="article">
-                      <h4>{article.title}</h4>
-                      <p>{article.text}</p>
-                      <br/>
-                    </div>
-                  )) : "There's no news posted yet"
-             }
-            </div>
-          </div>
-        </div>
+    <div className="news-board-page-container ">
+      <div className="mx-14 my-10">
+        <Card className="user-news-table-card">
+          <Grid columns={tableColumns} data={newsFeedArray} pageSize={500} height={"calc"} itemHeight={48} />
+        </Card>
       </div>
     </div>
-  )
+  );
 };

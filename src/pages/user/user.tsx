@@ -2,20 +2,17 @@ import { ICONS } from "components/icon/icon";
 import { NavBar, NavBarBtn } from "components/nav-bar/nav-bar";
 import { Navigate, useLocation } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
+import { DonationHistory } from "./donation-history/donation-history";
 import { MyProfile } from "./my-profile/my-profile";
 import { NewsBoard } from "./news-board/news-board";
 import { QrCode } from "./qr-code/qrcode";
 import "./user.scss";
 
-// pages
-// user profile
-// news board
-
 const navButtons: NavBarBtn[] = [
   { icon: ICONS.USER, name: "My Profile", path: "/main/user/my-profile" },
   { icon: ICONS.NEWS, name: "News Board", path: "/main/user/news-board" },
   { icon: ICONS.VIEW, name: "QrCodes", path: "/main/user/qr-code" },
-  // { icon: ICONS.HOME, name: "Donations History", path: "/main/user/donations" },
+  { icon: ICONS.BELL, name: "Donation History", path: "/main/user/donation-history" },
 ];
 
 export const User = () => {
@@ -26,10 +23,10 @@ export const User = () => {
       <NavBar buttons={navButtons} />
       <Routes>
         <Route path="/" element={<Navigate replace to={`${location.pathname}/my-profile`} />} />
-        <Route path="/my-profile" element={<MyProfile />} /> //? asta nu exista
+        <Route path="/my-profile" element={<MyProfile />} />
         <Route path="/news-board" element={<NewsBoard />} />
         <Route path="/qr-code" element={<QrCode />} />
-        {/* <Route path="/donations" element={<AdminDonations />} /> */}
+        <Route path="/donation-history" element={<DonationHistory />} />
       </Routes>
     </div>
   );

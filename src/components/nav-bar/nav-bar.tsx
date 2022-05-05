@@ -1,3 +1,4 @@
+import { clearToken } from "api/api";
 import { Button } from "components/button/button";
 import { Icon, ICONS } from "components/icon/icon";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -17,14 +18,23 @@ export type NavBarProps = {
 export const NavBar = ({ buttons }: NavBarProps) => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  function onLogout() {
+    navigate("/login");
+    clearToken();
+  }
+
   return (
     <div className="navbar-container">
       <div className="appBar">
-        <button className="logOut-btn">Logout</button>
+        <button className="logOut-btn" onClick={onLogout}>
+          Logout
+        </button>
       </div>
       <div className="navbar">
         {buttons.map((btn, index) => (
           <Button
+            key={index}
             className={`navbar-btn ${location.pathname.includes(btn.path) ? "active" : ""}`}
             variant="icon-btn"
             onClick={() => {

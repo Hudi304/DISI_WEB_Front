@@ -34,12 +34,16 @@ export const MyProfileSelect = ({ title, onChange, options = [] }: MyProfileSele
         name="cars"
         id="cars"
         onChange={(e) => {
-          console.log(e.target.value);
+          // console.log(e.target.value);
           onChange(e.target.value);
         }}
       >
         {options?.map((type, index) => {
-          return <option value={type.value}>{type.label}</option>;
+          return (
+            <option key={index} value={type.value}>
+              {type.label}
+            </option>
+          );
         })}
       </select>
     </div>
