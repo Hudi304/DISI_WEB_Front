@@ -17,9 +17,9 @@ type UserProfileParameterProps = {
 export const UserProfileParameter = ({ title, value }: UserProfileParameterProps) => {
   return (
     <div className="flex items-center justify-center">
-      <div className="user-profile-parameter debug">
+      <div className="user-profile-parameter ">
         <div className="title">{title}</div>
-        <div className="loading-bar-container debug ">
+        <div className="loading-bar-container  ">
           <div className="loading-bar" style={{ width: `${value}%` }}></div>
         </div>
       </div>
@@ -72,7 +72,7 @@ export const MyProfile = () => {
 
   return (
     <div className="my-profile-page-container">
-      <div className="my-profile-side-bar debug">
+      <div className="my-profile-side-bar ">
         <MyProfileInput title="First Name" value={firstName} setValue={setFirstName} />
         <MyProfileInput title="Last Name" value={lastName} setValue={setLastName} />
         <MyProfileInput title="CNP" value={cnp} setValue={setCnp} />
@@ -83,7 +83,7 @@ export const MyProfile = () => {
         <Button onClick={onSave}>Save</Button>
       </div>
       <div className="flex items-center justify-start pl-7">
-        <div className="my-profile-page debug">
+        <div className="my-profile-page ">
           <UserProfileParameter title={"Weight"} value={50} max={100} min={0} />
           <UserProfileParameter title={"Weight"} value={30} max={100} min={0} />
           <UserProfileParameter title={"Weight"} value={10} max={100} min={0} />
