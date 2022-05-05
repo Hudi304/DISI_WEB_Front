@@ -14,13 +14,12 @@ const model = {
   } as State,
   reducers: {
     loginLoaded: (state: State, payload: any): State => {
-      console.log("📅 REDUCER Login : ", payload);
+      // console.log("📅 REDUCER Login : ", payload);
       if (payload.user) {
         const user = payload.user;
-        localStorage.setItem("userData", JSON.stringify(user));
-
+        // localStorage.setItem("userData", JSON.stringify(user));
         const localStoaregeUser = localStorage.getItem("userData");
-        console.log("localStoaregeUser 🔥  ", localStoaregeUser);
+        // console.log("localStoaregeUser 🔥  ", localStoaregeUser);
       }
 
       return {

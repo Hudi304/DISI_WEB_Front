@@ -7,6 +7,7 @@ import forgotPassword from "./forgot-password";
 import resetPassword from "./reset-password";
 import reqDonation from "./req-donation";
 import admin from "./admin";
+import user from "./user";
 
 interface RootModel extends Models<RootModel> {
   login: typeof login;
@@ -15,6 +16,7 @@ interface RootModel extends Models<RootModel> {
   resetPassword: typeof resetPassword;
   reqDonation: typeof reqDonation;
   admin: typeof admin;
+  user: typeof user;
 }
 
 type FullModel = ExtraModelsFromLoading<RootModel>;
@@ -26,6 +28,7 @@ const models = {
   resetPassword,
   reqDonation,
   admin,
+  user,
 } as RootModel;
 
 const store = init<RootModel, FullModel>({

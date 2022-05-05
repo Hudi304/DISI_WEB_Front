@@ -35,9 +35,7 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
   });
 
   useEffect(() => {
-    console.log("userInfo : ", userInfo?.user);
-    localStorage.setItem("userInfo", userInfo?.user);
-
+    localStorage.setItem("userInfo", JSON.stringify(userInfo?.user));
     if (userInfo == 401) {
       setError(true);
     }
@@ -66,7 +64,6 @@ const LoginComponent: FC<Props> = ({ login, userInfo }: Props) => {
   }, [userInfo]);
 
   function onSubmit(values: any) {
-    console.log("Login submit", values);
     const loginRequest: LoginRequest = { email: values?.email, password: values.password };
     login(loginRequest);
   }

@@ -23,12 +23,10 @@ const model = {
   effects: (dispatch: RematchDispatch<any>) => ({
     async postNews(payload: CreateNewsItemRequest) {
       const resp = await addNewsApi(payload);
-      console.log("resp : ", resp);
     },
 
     async getNewsFeed() {
       const resp = await getNewsItemsApi();
-      console.log("resp : ", resp);
       dispatch.admin.loadedGetNewsFeed(resp);
     },
   }),

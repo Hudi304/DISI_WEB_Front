@@ -16,7 +16,7 @@ const tableColumns = [
       <Checkbox
         value={false}
         onChange={(event: any) => {
-          console.log("select all");
+          // console.log("select all");
         }}
       />
     ),
@@ -26,7 +26,7 @@ const tableColumns = [
       <Checkbox
         value={false}
         onChange={(event: any) => {
-          console.log("select");
+          // console.log("select");
         }}
       />
     ),
@@ -74,7 +74,6 @@ export const AdminNewsFeed = () => {
   }, []);
 
   useEffect(() => {
-    console.log(newsFeed);
     setNewsFeedArray(newsFeed);
   }, [newsFeed]);
 
@@ -120,7 +119,7 @@ export const AdminNewsFeed = () => {
             height={"calc"}
             itemHeight={48}
             onRowClick={() => {
-              console.log("on row click");
+              // console.log("on row click");
             }}
           />
         </Card>

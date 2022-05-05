@@ -1,4 +1,8 @@
-import { SetStateAction, useState } from "react";
+import { UserProfileDTO } from "common/models/UserProfileDTO";
+import { Button } from "components/button/button";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootDispatch, RootState } from "store";
 import { MyProfileInput, MyProfileSelect } from "./my-profile-input";
 import { BLOOD_TYPES, SEXES } from "./my-profile-utils";
 import "./my-profile.scss";
@@ -33,6 +37,39 @@ export const MyProfile = () => {
   const [bloodType, setBloodType] = useState("");
   const [sex, setSex] = useState("");
 
+  const getNewsFeed = useDispatch<RootDispatch>().user.getNewsFeed;
+  const getMyProfile = useDispatch<RootDispatch>().user.getMyProfile;
+  const updateMyProfile = useDispatch<RootDispatch>().user.updateMyProfile;
+
+  // const userInfo = localStorage.getItem("userInfo");
+
+  const objString = localStorage.getItem("userInfo") || "{}";
+
+  const userInfo = JSON.parse(objString);
+  console.log(userInfo);
+
+  const newsFeed = useSelector((state: RootState) => state.user.news);
+  const userProfile = useSelector((state: RootState) => state.user.userProfile);
+
+  useEffect(() => {
+    getMyProfile(userInfo.id);
+  }, []);
+
+  useEffect(() => {
+    // console.log("userProfile?.age : ", userProfile?.age);
+    setAge(String(userProfile?.age || ""));
+  }, [userProfile]);
+
+  function onSave() {
+    const newUserProfile = new UserProfileDTO();
+    newUserProfile.age = age;
+    newUserProfile.cnp = cnp;
+    newUserProfile.bloodType = bloodType;
+    newUserProfile.sex = sex;
+    newUserProfile.weight = weight;
+    updateMyProfile({ id: userInfo.id, newUserProfile });
+  }
+
   return (
     <div className="my-profile-page-container">
       <div className="my-profile-side-bar debug">
@@ -43,24 +80,7 @@ export const MyProfile = () => {
         <MyProfileInput title="Age" value={age} setValue={setAge} />
         <MyProfileSelect title="Sex" onChange={setSex} options={SEXES} />
         <MyProfileSelect title="Blood Type" onChange={setBloodType} options={BLOOD_TYPES} />
-
-        <button
-          onClick={(e) => {
-            const personalInfo = {
-              firstName,
-              lastName,
-              cnp,
-              weight,
-              age,
-              bloodType,
-              sex,
-            };
-
-            console.log("onSave : ", personalInfo);
-          }}
-        >
-          save
-        </button>
+        <Button onClick={onSave}>Save</Button>
       </div>
       <div className="flex items-center justify-start pl-7">
         <div className="my-profile-page debug">

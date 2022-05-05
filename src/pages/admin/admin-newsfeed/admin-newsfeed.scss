@@ -4,7 +4,7 @@
   grid-template-columns: 1fr 5fr;
 
   .form-card {
-    @apply bg-primary-400 rounded-md flex flex-col p-3 mx-3;
+    @apply bg-primary-400 rounded-md flex flex-col p-3 mx-3 ;
     height: min-content;
     width: min-content;
   }

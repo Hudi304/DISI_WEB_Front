@@ -28,8 +28,8 @@ const SignUpComponent: FC<Props> = ({ signUpResponse, signUp }: Props) => {
     },
   });
   function handleSubmit(values: any) {
-    console.log("Sign Up submit", values);
-    const signUpRequest: UserRegisterRequest = { email: values?.email, password: values.password }
+    // console.log("Sign Up submit", values);
+    const signUpRequest: UserRegisterRequest = { email: values?.email, password: values.password };
     signUp(signUpRequest);
   }
 
@@ -38,12 +38,10 @@ const SignUpComponent: FC<Props> = ({ signUpResponse, signUp }: Props) => {
   }
 
   useEffect(() => {
-
     if (signUpResponse?.message) {
       navigate("/login");
-    } 
-
-  }, [signUpResponse]) 
+    }
+  }, [signUpResponse]);
 
   return (
     <div className="sign-up-page-container">

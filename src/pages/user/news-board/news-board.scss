@@ -1,0 +1,7 @@
+.news-board-page-container {
+  @apply h-full;
+
+  .user-news-table-card {
+    height: calc(100vh - 300px);
+  }
+}
