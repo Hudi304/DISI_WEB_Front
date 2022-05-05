@@ -42,7 +42,6 @@ export function getAdminTableColumns(setModal: (e: any) => void) {
         return (
           <Button
             onClick={(e: any) => {
-              console.log(row);
               setModal(<EditDonationCenterDialog />);
             }}
           >

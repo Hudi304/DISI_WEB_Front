@@ -1,3 +1,4 @@
+import { clearToken } from "api/api";
 import { Button } from "components/button/button";
 import { Icon, ICONS } from "components/icon/icon";
 import { useEffect } from "react";
@@ -21,23 +22,15 @@ export const NavBar = ({ buttons }: NavBarProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const logOut = useDispatch<RootDispatch>().login.logout;
-
-  const setLoggingOutFalseRed = useDispatch<RootDispatch>().login.setLoggingOutFalseRed;
-
-  const loggingOut = useSelector((state: RootState) => state.login.loggingOut);
-
-  useEffect(() => {
-    if (loggingOut) {
-      navigate("/login");
-      setLoggingOutFalseRed();
-    }
-  }, [loggingOut]);
+  function onLogout() {
+    navigate("/login");
+    clearToken();
+  }
 
   return (
     <div className="navbar-container">
       <div className="appBar">
-        <button className="logOut-btn" onClick={logOut}>
+        <button className="logOut-btn" onClick={onLogout}>
           Logout
         </button>
       </div>

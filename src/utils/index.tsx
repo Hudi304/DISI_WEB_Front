@@ -14,6 +14,14 @@ export enum ColorClassType {
   NONE = "",
 }
 
+export function formatDateFromString(inputDate?: string) {
+  if (!inputDate) return undefined;
+  const date: Date = new Date(inputDate);
+  //prettier-ignore
+  const formattedDate: string = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  return formattedDate;
+}
+
 export const clamp = (value: number, low: number, high: number): number => {
   //? Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b)) found this but seems harder to read
   return value < low ? low : value > high ? high : value;

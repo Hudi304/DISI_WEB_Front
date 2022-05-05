@@ -4,7 +4,7 @@ import { loginApi } from "api/endpoints/jwt-authentication-controller.api";
 import { LoginRequest } from "common/models/LoginRequest";
 
 type State = Readonly<{
-  login: any; //! 🤖 ar trebui sa fie de tip Login response da'nu e definit pe server inca
+  login: any;
   userInfo: any;
   loggingOut: boolean;
 }>;
@@ -18,9 +18,12 @@ const model = {
 
   reducers: {
     loginLoaded: (state: State, payload: any): State => {
+      // console.log("📅 REDUCER Login : ", payload);
       if (payload.user) {
         const user = payload.user;
-        localStorage.setItem("userData", JSON.stringify(user));
+        // localStorage.setItem("userData", JSON.stringify(user));
+        const localStoaregeUser = localStorage.getItem("userData");
+        // console.log("localStoaregeUser 🔥  ", localStoaregeUser);
       }
       return {
         ...state,
@@ -32,15 +35,7 @@ const model = {
       console.log("logoutRed");
       return {
         ...state,
-        loggingOut: true,
-      };
-    },
-
-    setLoggingOutFalseRed: (state: State): State => {
-      console.log("setLoggingOutFalseRed");
-      return {
-        ...state,
-        loggingOut: false,
+        // userInfo: payload,
       };
     },
   },
@@ -48,18 +43,6 @@ const model = {
     async login(payload: LoginRequest) {
       const loginResponse = await loginApi(payload);
       dispatch.login.loginLoaded(loginResponse);
-    },
-
-    async logout() {
-      console.log("logout");
-      localStorage.removeItem(ACCESS_TOKEN);
-      localStorage.removeItem("userData");
-      dispatch.login.logoutRed();
-    },
-
-    async setLoggingOutFalse() {
-      console.log("setLoggingOutFalse");
-      dispatch.login.setLoggingOutFalseRed();
     },
   }),
 };

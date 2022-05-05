@@ -8,20 +8,17 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
   const axiosInstance = axios.create(options);
   const token = getAccessToken();
 
-  const getTk = getAccessToken();
+  // console.log("auth headers", token);
 
-  console.log("auth headers", token);
-  console.log("getTk", getTk);
-
-  // if (typeof token == "string") {
   if (typeof token == "string" && token != "") {
     axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
-    console.log("bearer");
+    // console.log("bearer");
   }
 
   axiosInstance.interceptors.response.use(
     (response) => {
       if (response?.data?.token) {
+        clearToken();
         setToken(response?.data?.token);
       }
       return Promise.resolve(response?.data);
@@ -30,8 +27,8 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
       switch (error?.response?.status) {
         case 401:
           console.log("Request failed with status 401  Unauthorized ");
-          clearToken();
-          return Promise.resolve(error?.response?.status);
+          // clearToken();
+          return Promise.resolve(error.response.status);
 
         case 404:
           console.log("Request failed with status 404  NOT FOUND ");
@@ -45,7 +42,7 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
 };
 
 function setToken(token: string) {
-  localStorage.setItem(ACCESS_TOKEN, JSON.stringify(token));
+  localStorage.setItem(ACCESS_TOKEN, token);
 }
 
 function getAccessToken() {

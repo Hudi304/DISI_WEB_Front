@@ -90,7 +90,7 @@ export const MapForm = () => {
         options={CityOptions}
         value={city}
         onChange={(e) => {
-          console.log(e);
+          // console.log(e);
         }}
       />
       <div className="w-ful flex mt-2">
