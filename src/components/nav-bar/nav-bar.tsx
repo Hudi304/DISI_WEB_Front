@@ -25,6 +25,7 @@ export const NavBar = ({ buttons }: NavBarProps) => {
       <div className="navbar">
         {buttons.map((btn, index) => (
           <Button
+            key={index}
             className={`navbar-btn ${location.pathname.includes(btn.path) ? "active" : ""}`}
             variant="icon-btn"
             onClick={() => {

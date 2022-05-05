@@ -1,7 +1,7 @@
 import { CreateNewsItemRequest } from "common/models/CreateNewsItemRequest";
-import { API } from "../api";
+import { API } from "./api";
 
-export const addNewsPostApi = (body: CreateNewsItemRequest): Promise<any> => API().post(`add_news`, body);
+export const addNewsApi = (body: CreateNewsItemRequest): Promise<any> => API().post(`add_news`, body);
 
 export const getNewsItemsApi = (): Promise<any> => API().get(`get_news`);
 

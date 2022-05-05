@@ -2,18 +2,15 @@ import { ICONS } from "components/icon/icon";
 import { NavBar, NavBarBtn } from "components/nav-bar/nav-bar";
 import { Navigate, useLocation } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
+import { DonationHistory } from "./donation-history/donation-history";
 import { MyProfile } from "./my-profile/my-profile";
 import { NewsBoard } from "./news-board/news-board";
 import "./user.scss";
 
-// pages
-// user profile
-// news board
-
 const navButtons: NavBarBtn[] = [
   { icon: ICONS.USER, name: "My Profile", path: "/main/user/my-profile" },
   { icon: ICONS.NEWS, name: "News Board", path: "/main/user/news-board" },
-  // { icon: ICONS.HOME, name: "Donations History", path: "/main/user/donations" },
+  { icon: ICONS.NEWS, name: "News Board", path: "/main/user/news-board" },
 ];
 
 export const User = () => {
@@ -26,7 +23,7 @@ export const User = () => {
         <Route path="/" element={<Navigate replace to={`${location.pathname}/my-profile`} />} />
         <Route path="/my-profile" element={<MyProfile />} /> //? asta nu exista
         <Route path="/news-board" element={<NewsBoard />} />
-        {/* <Route path="/donations" element={<AdminDonations />} /> */}
+        <Route path="/donations_history" element={<DonationHistory />} />
       </Routes>
     </div>
   );

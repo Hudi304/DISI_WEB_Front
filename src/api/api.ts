@@ -8,10 +8,10 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
   const axiosInstance = axios.create(options);
   const token = getAccessToken();
 
-  const getTk = getAccessToken();
+  // const getTk = getAccessToken();
 
   console.log("auth headers", token);
-  console.log("getTk", getTk);
+  // console.log("getTk", getTk);
 
   // if (typeof token == "string") {
   if (typeof token == "string" && token != "") {
@@ -32,8 +32,8 @@ export const API = (baseURL = API_URL, callOptions: any = {}): any => {
       switch (error?.response?.status) {
         case 401:
           console.log("Request failed with status 401  Unauthorized ");
-          clearToken();
-          return Promise.resolve(error?.response?.status);
+          // clearToken();
+          return Promise.resolve(error.response.status);
 
         case 404:
           console.log("Request failed with status 404  NOT FOUND ");
