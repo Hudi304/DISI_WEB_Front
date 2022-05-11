@@ -1,22 +1,27 @@
 .qrCode-page-container {
-  @apply grid items-center justify-center overflow-hidden bg-blue-500;
-  grid-template-columns: repeat(2, auto);
+  @apply grid items-center justify-center overflow-auto bg-blue-500;
+  grid-template-rows: repeat(2, auto);
   width: 100vw;
   height: 100vh;
-  
-  .qr-code-page{
-    grid-template-columns: repeat(3, auto);
 
-    .qr-code{
-        padding: 20px;
+  .reset-password-card{
+    @apply grid items-center justify-center;
+  }
+  .qr-code-page {
+    @apply grid items-center justify-center;
+    width: 100vw;
+    height: 100vh;
+    
+    grid-template-columns: repeat(4, auto);
+    // grid-template-rows: repeat(10, auto);
+
+    .qr-code {
+      padding: 20px;
     }
   }
-  
-
-
 
   .reset-password-card {
-    .error-message{
+    .error-message {
       color: red;
     }
     @apply bg-blue-300;
@@ -27,5 +32,4 @@
       }
     }
   }
- 
 }

@@ -46,6 +46,8 @@ const model = {
       const localStoaregeUser = localStorage.getItem("emailUser");
       // console.log("MAIL", localStoaregeUser);
       const loginResponse = await loginApi(payload);
+      localStorage.removeItem("emailUser");
+      localStorage.setItem("emailUser", payload.email);
       dispatch.login.loginLoaded(loginResponse);
     },
   }),

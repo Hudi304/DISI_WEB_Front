@@ -8,6 +8,7 @@ import resetPassword from "./reset-password";
 import reqDonation from "./req-donation";
 import admin from "./admin";
 import user from "./user";
+import qrCode from "./qr-code";
 import bloodBank from "./blood-bank-request";
 
 interface RootModel extends Models<RootModel> {
@@ -18,6 +19,7 @@ interface RootModel extends Models<RootModel> {
   reqDonation: typeof reqDonation;
   admin: typeof admin;
   user: typeof user;
+  qrCode: typeof qrCode;
   bloodBank: typeof bloodBank;
 }
 
@@ -31,6 +33,7 @@ const models = {
   reqDonation,
   admin,
   user,
+  qrCode,
   bloodBank,
 } as RootModel;
 
