@@ -18,8 +18,8 @@
     .request {
       @apply grid items-start justify-start;
 
-      grid-template-columns: repeat(10, auto);
-      grid-template-columns: repeat(10, auto);
+      grid-template-columns: repeat(6, auto);
+      grid-template-rows: repeat(10, auto);
 
       .cardRequest {
         padding: 10px;

@@ -101,8 +101,13 @@ export const BloodBankComponent: FC<Props> = ({ getBloodBankRequestsCall, reqBlo
     },
   });
 
+  async function getRequest() {
+    await getBloodBankRequestsCall();
+  }
+
   useEffect(() => {
-    getBloodBankRequestsCall();
+    
+    getRequest();
   }, []);
 
   useEffect(() => {
@@ -129,13 +134,12 @@ export const BloodBankComponent: FC<Props> = ({ getBloodBankRequestsCall, reqBlo
   function handleSubmitBloodBank(values: any) {
     const mail = localStorage.getItem("emailUser");
 
-    if (bloodType === "" || location === "" || values?.name === ""){
-      setErrorMessage(true)
+    if (bloodType === "" || location === "" || values?.name === "") {
+      setErrorMessage(true);
+    } else {
+      setErrorMessage(false);
     }
-    else{
-      setErrorMessage(false)
-    }
-    if (!errorMessage){
+    if (!errorMessage) {
       var requestBody: BloodBankRequestDTO = {
         userEmail: mail ?? "",
         userName: values?.name,
@@ -144,7 +148,8 @@ export const BloodBankComponent: FC<Props> = ({ getBloodBankRequestsCall, reqBlo
       };
       // console.log("REQUEST BODY", requestBody);
       postBloodRequestReq(requestBody);
-      getBloodBankRequestsCall();
+      getRequest();
+      // getBloodBankRequestsCall();
     }
   }
 
