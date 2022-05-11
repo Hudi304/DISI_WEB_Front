@@ -3,6 +3,7 @@ import { NavBar, NavBarBtn } from "components/nav-bar/nav-bar";
 import { AdminDonations } from "pages/admin/admin-donations/admin-donations";
 import { Navigate, useLocation } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
+import { BloodBankComponent, BloodRequest } from "./blood-bank/blood-bank";
 import { DonationHistory } from "./donation-history/donation-history";
 import { MyProfile } from "./my-profile/my-profile";
 import { NewsBoard } from "./news-board/news-board";
@@ -14,6 +15,7 @@ const navButtons: NavBarBtn[] = [
   { icon: ICONS.NEWS, name: "News Board", path: "/main/user/news-board" },
   { icon: ICONS.VIEW, name: "QrCodes", path: "/main/user/qr-code" },
   { icon: ICONS.BELL, name: "Donation History", path: "/main/user/donation-history" },
+  { icon: ICONS.HEARTH, name: "Blood Request", path: "/main/user/blood-request" },
 ];
 
 export const User = () => {
@@ -28,6 +30,7 @@ export const User = () => {
         <Route path="/news-board" element={<NewsBoard />} />
         <Route path="/qr-code" element={<QrCode />} />
         <Route path="/donation-history" element={<DonationHistory />} />
+        <Route path="/blood-request" element={<BloodRequest />} />
       </Routes>
     </div>
   );

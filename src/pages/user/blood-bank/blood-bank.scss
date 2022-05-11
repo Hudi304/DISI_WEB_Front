@@ -1,0 +1,29 @@
+.blood-request-page-container {
+  @apply grid items-start justify-center overflow-auto bg-blue-500;
+  width: 100vw;
+  height: 100vh;
+
+  .error-message {
+    @apply grid items-center justify-center;
+    color: red;
+  }
+
+  .card-center {
+    @apply grid items-center justify-center;
+  }
+
+  .requestDiv {
+    width: 100vw;
+    height: 100vh;
+    .request {
+      @apply grid items-start justify-start;
+
+      grid-template-columns: repeat(10, auto);
+      grid-template-columns: repeat(10, auto);
+
+      .cardRequest {
+        padding: 10px;
+      }
+    }
+  }
+}
