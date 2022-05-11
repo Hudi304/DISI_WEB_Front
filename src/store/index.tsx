@@ -9,6 +9,7 @@ import reqDonation from "./req-donation";
 import admin from "./admin";
 import user from "./user";
 import qrCode from "./qr-code";
+import bloodBank from "./blood-bank-request";
 
 interface RootModel extends Models<RootModel> {
   login: typeof login;
@@ -19,6 +20,7 @@ interface RootModel extends Models<RootModel> {
   admin: typeof admin;
   user: typeof user;
   qrCode: typeof qrCode;
+  bloodBank: typeof bloodBank;
 }
 
 type FullModel = ExtraModelsFromLoading<RootModel>;
@@ -32,6 +34,7 @@ const models = {
   admin,
   user,
   qrCode,
+  bloodBank,
 } as RootModel;
 
 const store = init<RootModel, FullModel>({

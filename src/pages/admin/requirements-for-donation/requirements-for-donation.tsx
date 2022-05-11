@@ -27,7 +27,6 @@ var defaultOption: Option = { value: null, label: "NULL", disabled: false };
 type Props = ReturnType<typeof mapProps> & ReturnType<typeof mapDispatch>;
 
 const ReqDonationComponent: FC<Props> = ({ reqDonationResponse, getReqDonation, updateReqDonation }: Props) => {
-
   const [optionTattoo, setOptionTattoo] = useState(defaultOption);
   const [optionBlood, setOptionBlood] = useState(defaultOption);
   const [optionDisease, setOptionDisease] = useState(defaultOption);
@@ -37,10 +36,10 @@ const ReqDonationComponent: FC<Props> = ({ reqDonationResponse, getReqDonation, 
   const [optionWeeks, setOptionWeeks] = useState(defaultOption);
   const [optionVenereal, setOptionVenereal] = useState(defaultOption);
 
-  const [minAge, setMinAge] = useState(reqDonationResponse.minAge);
-  const [maxAge, setMaxAge] = useState(reqDonationResponse.maxAge);
-  const [minWeight, setMinWeight] = useState(reqDonationResponse.minWeight);
-  const [maxWeight, setMaxWeight] = useState(reqDonationResponse.maxWeight);
+  const [minAge, setMinAge] = useState(reqDonationResponse.minAge ?? 0);
+  const [maxAge, setMaxAge] = useState(reqDonationResponse.maxAge ?? 0);
+  const [minWeight, setMinWeight] = useState(reqDonationResponse.minWeight ?? 0);
+  const [maxWeight, setMaxWeight] = useState(reqDonationResponse.maxWeight ?? 0);
   let options: Option[] = [
     {
       value: true,
@@ -68,15 +67,20 @@ const ReqDonationComponent: FC<Props> = ({ reqDonationResponse, getReqDonation, 
     },
   });
 
+  async function getRequirements() {
+    await getReqDonation();
+  }
+
   useEffect(() => {
-    getReqDonation();
+    getRequirements();
   }, []);
 
   useEffect(() => {
-    console.log("MINVALUE", minAge);
-    setMaxAge(reqDonationResponse.maxAge);
-    setMinWeight(reqDonationResponse.minWeight);
-    setMaxWeight(reqDonationResponse.maxWeight);
+    // setMinAge(reqDonationResponse.minAge);
+    // setMaxAge(reqDonationResponse.maxAge);
+    // console.log("MINIM", minAge);
+    // setMinWeight(reqDonationResponse.minWeight);
+    // setMaxWeight(reqDonationResponse.maxWeight);
     changeOptionAntibiotics(setOption(reqDonationResponse.isAllergic));
     changeOptionTattoo(setOption(reqDonationResponse.hasTattooOrPiercing));
     changeOptionBlood(setOption(reqDonationResponse.hasDonatedBlood));
@@ -101,7 +105,7 @@ const ReqDonationComponent: FC<Props> = ({ reqDonationResponse, getReqDonation, 
     }
   }
 
-  function chnageMinAge(min : number){
+  function chnageMinAge(min: number) {
     setMinAge(min);
   }
 
@@ -148,12 +152,12 @@ const ReqDonationComponent: FC<Props> = ({ reqDonationResponse, getReqDonation, 
 
     updateReqDonation(body);
     // console.log("FORM", values);
-    getReqDonation();
+    getRequirements();
     // getReqDonation();
     // console.log("DONATION", reqDonationResponse);
   }
 
-  function changeAge(min: number,max:number){}
+  function changeAge(min: number, max: number) {}
 
   return (
     <div className="req-donation-page-container">
