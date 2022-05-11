@@ -42,6 +42,8 @@ const model = {
   effects: (dispatch: RematchDispatch<any>) => ({
     async login(payload: LoginRequest) {
       const loginResponse = await loginApi(payload);
+      localStorage.removeItem("emailUser");
+      localStorage.setItem("emailUser", payload.email);
       dispatch.login.loginLoaded(loginResponse);
     },
   }),
