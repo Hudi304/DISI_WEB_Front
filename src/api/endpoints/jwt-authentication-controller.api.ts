@@ -1,5 +1,5 @@
-import { UserRegisterRequest } from "common/models/UserRegisterRequest";
-import { LoginRequest } from "common/models/LoginRequest";
+import { UserRegisterRequest } from 'common/models/UserRegisterRequest';
+import { LoginRequest } from 'common/models/LoginRequest';
 import { API } from "../api";
 
 export const insertNormalUserApi = (body: UserRegisterRequest): Promise<any> => API().post(`register_normal`, body);
