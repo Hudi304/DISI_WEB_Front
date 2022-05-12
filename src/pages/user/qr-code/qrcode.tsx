@@ -84,7 +84,7 @@ export const QrCodeComponent: FC<Props> = ({ getQrCodeCall, qrCodeResponse, post
     const codeString = makeid();
     var c = `${codeString}${number}`;
     const mail = localStorage.getItem("emailUser") ?? "";
-    // await setAsyncNrOfQrCodes(2);
+    await setAsyncNrOfQrCodes(2);
     if (numberOfQrCodes == 2) {
       localStorage.setItem("qrCodeTime", new Date().toString());
       const dateQrRaw = localStorage.getItem("qrCodeTime");
