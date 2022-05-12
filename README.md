@@ -1,6 +1,12 @@
 # README #
 
 ## Please base your branches on the dev, Tudor will merge it into master once it's ready!
+Users :
+user@user.com
+user 
+
+admin 
+admin 
 
 Production : https://main.d2k4ifw8dsgumv.amplifyapp.com/login
 
